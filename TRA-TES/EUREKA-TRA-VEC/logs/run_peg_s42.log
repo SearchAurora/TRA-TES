@@ -1,0 +1,7 @@
+usage: eureka_main_multi.py [-h] [--resume] [--resume_run_id RESUME_RUN_ID]
+                            [--iterations ITERATIONS] [--num_envs NUM_ENVS]
+                            [--rl_iters RL_ITERS] [--seed SEED]
+                            [--num_candidates NUM_CANDIDATES]
+                            [--num_gpus NUM_GPUS]
+                            [--task {lift,cabinet,anymal}]
+eureka_main_multi.py: error: argument --task: invalid choice: 'peg_insert' (choose from 'lift', 'cabinet', 'anymal')

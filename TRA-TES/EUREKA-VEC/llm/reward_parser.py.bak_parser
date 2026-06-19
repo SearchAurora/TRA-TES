@@ -1,0 +1,176 @@
+"""
+Reward Parser (EUREKA-TRA v2: multi-task, dict return for component attribution)
+"""
+import ast
+import re
+import textwrap
+import numpy as np
+import logging
+
+logger = logging.getLogger(__name__)
+
+_FORBIDDEN = ["import os", "import sys", "subprocess", "__import__", "open(", "exec(", "eval("]
+
+# Per-task obs keys and dummy obs for validation
+_TASK_OBS = {
+    "lift": {
+        "keys": {
+            "obj_pos_x", "obj_pos_y", "obj_pos_z",
+            "target_pos_x", "target_pos_y", "target_pos_z",
+            "obj_goal_dist", "eef_obj_dist", "gripper_open",
+            "joint_vel_norm", "action_rate",
+        },
+        "dummy": {
+            "obj_pos_x": 0.5, "obj_pos_y": 0.0, "obj_pos_z": 0.055,
+            "target_pos_x": 0.5, "target_pos_y": 0.0, "target_pos_z": 0.4,
+            "obj_goal_dist": 0.35, "eef_obj_dist": 0.2, "gripper_open": 0.5,
+            "joint_vel_norm": 0.1, "action_rate": 0.05,
+        },
+    },
+    "cabinet": {
+        "keys": {
+            "joint_pos_norm", "joint_vel_norm",
+            "to_target_x", "to_target_y", "to_target_z",
+            "dist_to_handle", "drawer_pos", "drawer_vel", "drawer_open",
+        },
+        "dummy": {
+            "joint_pos_norm": 0.5, "joint_vel_norm": 0.1,
+            "to_target_x": 0.1, "to_target_y": 0.05, "to_target_z": -0.02,
+            "dist_to_handle": 0.15, "drawer_pos": 0.0, "drawer_vel": 0.0,
+            "drawer_open": 0.0,
+        },
+    },
+    "anymal": {
+        "keys": {
+            "lin_vel_x", "lin_vel_y", "lin_vel_z",
+            "ang_vel_z", "cmd_lin_vel_x", "cmd_lin_vel_y", "cmd_yaw_rate",
+            "lin_vel_error", "yaw_error",
+            "joint_vel_norm", "action_rate", "base_tilt", "tracking_error",
+        },
+        "dummy": {
+            "lin_vel_x": 0.0, "lin_vel_y": 0.0, "lin_vel_z": 0.0,
+            "ang_vel_z": 0.0, "cmd_lin_vel_x": 0.5, "cmd_lin_vel_y": 0.0,
+            "cmd_yaw_rate": 0.0, "lin_vel_error": 0.5, "yaw_error": 0.0,
+            "joint_vel_norm": 0.1, "action_rate": 0.05, "base_tilt": 0.02,
+            "tracking_error": -0.5,
+        },
+    },
+    "peg_insert": {
+        "keys": {
+            "fingertip_rel_x", "fingertip_rel_y", "fingertip_rel_z",
+            "peg_hole_rel_x", "peg_hole_rel_y", "peg_hole_rel_z",
+            "dist_to_hole", "xy_alignment", "z_distance",
+            "ee_linvel_norm", "ee_angvel_norm", "action_rate",
+        },
+        "dummy": {
+            "fingertip_rel_x": 0.02, "fingertip_rel_y": 0.01, "fingertip_rel_z": 0.05,
+            "peg_hole_rel_x": 0.01, "peg_hole_rel_y": 0.005, "peg_hole_rel_z": 0.04,
+            "dist_to_hole": 0.05, "xy_alignment": 0.01, "z_distance": 0.04,
+            "ee_linvel_norm": 0.1, "ee_angvel_norm": 0.05, "action_rate": 0.03,
+        },
+    },
+}
+
+# Default task — set by eureka_main before calling validate/test
+_current_task = "lift"
+
+
+def set_task(task: str):
+    global _current_task
+    if task not in _TASK_OBS:
+        raise ValueError(f"Unknown task: {task}. Choose from {list(_TASK_OBS.keys())}")
+    _current_task = task
+
+
+def get_valid_obs_keys() -> set:
+    return _TASK_OBS[_current_task]["keys"]
+
+
+def get_dummy_obs() -> dict:
+    return _TASK_OBS[_current_task]["dummy"].copy()
+
+
+def extract_code(response: str) -> str:
+    m = re.findall(r"```(?:python)?\s*(.*?)```", response, re.DOTALL)
+    if m:
+        return textwrap.dedent(m[0]).strip()
+    return textwrap.dedent(response).strip()
+
+
+def _check_obs_keys(code: str) -> tuple[bool, str]:
+    """Check that all obs keys accessed in code are valid for current task."""
+    valid = get_valid_obs_keys()
+    used_keys = set(re.findall(r'obs\[[\"\'](\w+)[\"\']\]', code))
+    used_keys |= set(re.findall(r'obs\.get\([\"\'](\w+)[\"\']', code))
+    invalid = used_keys - valid
+    if invalid:
+        return False, f"Invalid obs keys for task '{_current_task}': {invalid}. Valid: {sorted(valid)}"
+    return True, ""
+
+
+def validate_code(code: str) -> tuple[bool, str]:
+    try:
+        tree = ast.parse(code)
+    except SyntaxError as e:
+        return False, f"SyntaxError: {e}"
+    funcs = [n.name for n in ast.walk(tree) if isinstance(n, ast.FunctionDef)]
+    if "compute_reward" not in funcs:
+        return False, "Missing compute_reward function"
+    for f in _FORBIDDEN:
+        if f in code:
+            return False, f"Forbidden: {f}"
+    ok, err = _check_obs_keys(code)
+    if not ok:
+        return False, err
+    return True, ""
+
+
+def load_reward_fn(code: str):
+    ok, err = validate_code(code)
+    if not ok:
+        raise ValueError(f"Invalid reward code: {err}")
+    ns = {"np": np, "math": __import__("math")}
+    exec(compile(code, "<reward_fn>", "exec"), ns)  # noqa: S102
+    fn = ns.get("compute_reward")
+    if not callable(fn):
+        raise ValueError("compute_reward not callable")
+    return fn
+
+
+def test_reward_fn(fn, obs: dict | None = None) -> tuple[bool, str]:
+    """Test reward function with task-appropriate dummy obs.
+    Supports both scalar and vectorized (batch) reward functions."""
+    if obs is None:
+        obs = get_dummy_obs()
+    try:
+        r = fn(obs)
+        if isinstance(r, dict):
+            if "total" not in r:
+                return False, f"Dict return must have 'total' key, got: {list(r.keys())}"
+            total = r["total"]
+            for k, v in r.items():
+                # Support both scalar and numpy array returns
+                if isinstance(v, np.ndarray):
+                    if np.any(np.isnan(v)) or np.any(np.isinf(v)):
+                        return False, f"Component '{k}' has non-finite values"
+                    continue
+                if not isinstance(v, (int, float, np.floating, np.integer)):
+                    return False, f"Component '{k}' is not numeric: {type(v)}"
+                if np.isnan(v) or np.isinf(v):
+                    return False, f"Component '{k}' is non-finite: {v}"
+            # Extract scalar total for display
+            total_val = float(total) if np.ndim(total) == 0 else float(total[0])
+            n_comp = len(r) - 1
+            return True, f"OK dict (total={total_val:.4f}, {n_comp} components)"
+        elif isinstance(r, np.ndarray):
+            if np.any(np.isnan(r)) or np.any(np.isinf(r)):
+                return False, f"Array has non-finite values"
+            return True, f"OK array (shape={r.shape})"
+        elif isinstance(r, (int, float, np.floating, np.integer)):
+            if np.isnan(r) or np.isinf(r):
+                return False, f"Non-finite value: {r}"
+            return True, f"OK (r={float(r):.4f})"
+        else:
+            return False, f"Wrong return type: {type(r)}. Must be float, array, or dict."
+    except Exception as e:
+        return False, f"Runtime error: {e}"

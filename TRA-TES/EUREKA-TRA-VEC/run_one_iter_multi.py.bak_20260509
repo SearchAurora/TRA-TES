@@ -1,0 +1,553 @@
+"""
+run_one_iter_multi.py (EUREKA-TRA 多任务版)
+============================================
+在原 run_one_iter.py 基础上新增 --task 参数支持 cabinet / anymal。
+原文件完全不动，本文件独立运行。
+用法：
+  python run_one_iter_multi.py \
+    --task cabinet \
+    --reward_fn /path/to/reward.py \
+    --output /path/to/stats.json \
+    --num_envs 4096 \
+    --rl_iters 1500 \
+    --log_dir /path/to/log
+"""
+import os
+import sys
+import json
+import argparse
+
+ISAACLAB_ROOT = "/root/autodl-tmp/TRA/IsaacLab"
+EUREKA_ROOT   = "/root/autodl-tmp/TRA/EUREKA"
+sys.path.insert(0, EUREKA_ROOT)
+sys.path.insert(0, "/root/autodl-tmp/TRA")
+sys.path.insert(0, f"{ISAACLAB_ROOT}/source/isaaclab")
+sys.path.insert(0, f"{ISAACLAB_ROOT}/source/isaaclab_tasks")
+sys.path.insert(0, f"{ISAACLAB_ROOT}/source/isaaclab_assets")
+sys.path.insert(0, f"{ISAACLAB_ROOT}/source/isaaclab_contrib")
+sys.path.insert(0, f"{ISAACLAB_ROOT}/source/isaaclab_rl")
+
+from isaaclab.app import AppLauncher
+
+def parse_args():
+    p = argparse.ArgumentParser()
+    p.add_argument("--task",       default="lift",
+                   choices=["lift", "cabinet", "anymal"])
+    p.add_argument("--reward_fn",  required=True)
+    p.add_argument("--output",     required=True)
+    p.add_argument("--num_envs",   type=int, default=256)
+    p.add_argument("--rl_iters",   type=int, default=300)
+    p.add_argument("--seed",       type=int, default=42)
+    p.add_argument("--log_dir",    default="/tmp/eureka_rl_log")
+    p.add_argument("--collect_trajectory", action="store_true")
+    p.add_argument("--trajectory_path",    default="")
+    p.add_argument("--tes_report_path",    default="")
+    AppLauncher.add_app_launcher_args(p)
+    return p.parse_args()
+
+args = parse_args()
+args.headless = True
+app_launcher   = AppLauncher(args)
+simulation_app = app_launcher.app
+
+# ── AppLauncher 之后才能 import ───────────────────────────────────────
+import torch
+import numpy as np
+import gymnasium as gym
+
+from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper, handle_deprecated_rsl_rl_cfg
+from rsl_rl.runners import OnPolicyRunner
+from importlib.metadata import version as pkg_version
+from llm.reward_parser import load_reward_fn, test_reward_fn, set_task
+
+# ── 按 task 加载 Env + PPORunnerCfg ──────────────────────────────────
+if args.task == "lift":
+    from isaaclab.envs import ManagerBasedRLEnv
+    from isaaclab_tasks.manager_based.manipulation.lift.config.franka.joint_pos_env_cfg import (
+        FrankaCubeLiftEnvCfg,
+    )
+    from isaaclab_tasks.manager_based.manipulation.lift.config.franka.agents.rsl_rl_ppo_cfg import (
+        LiftCubePPORunnerCfg,
+    )
+
+elif args.task == "cabinet":
+    from isaaclab.envs import DirectRLEnv
+    from isaaclab_tasks.direct.franka_cabinet.franka_cabinet_env import (
+        FrankaCabinetEnv, FrankaCabinetEnvCfg,
+    )
+    from isaaclab_tasks.direct.franka_cabinet.agents.rsl_rl_ppo_cfg import (
+        FrankaCabinetPPORunnerCfg,
+    )
+
+elif args.task == "anymal":
+    from isaaclab_tasks.direct.anymal_c.anymal_c_env import AnymalCEnv
+    from isaaclab_tasks.direct.anymal_c.anymal_c_env_cfg import AnymalCFlatEnvCfg
+    from isaaclab_tasks.direct.anymal_c.agents.rsl_rl_ppo_cfg import (
+        AnymalCFlatPPORunnerCfg,
+    )
+
+
+# ══════════════════════════════════════════════════════════════════════
+# EurekaRewardWrapper — 原版完全复制，只改 _to_dict
+# ══════════════════════════════════════════════════════════════════════
+
+class EurekaRewardWrapper(gym.Wrapper):
+    def __init__(self, env, reward_fn, collector=None):
+        super().__init__(env)
+        self.reward_fn    = reward_fn
+        self.collector    = collector
+        self._step_count  = np.zeros(env.num_envs, dtype=int)
+        # Cache ee_frame sensor for eef_obj_dist (Lift task only)
+        self._ee_frame = None
+        try:
+            self._ee_frame = env.scene["ee_frame"]
+        except Exception:
+            pass  # non-Lift tasks may not have ee_frame
+
+    def get_observations(self):
+        return self.env.get_observations()
+
+    def step(self, action):
+        obs, _, terminated, truncated, info = self.env.step(action)
+        rewards, reward_components_batch = self._compute_rewards(obs)
+        if self.collector is not None:
+            self._collect_trajectories(obs, rewards, reward_components_batch,
+                                       terminated, truncated)
+        self._step_count += 1
+        done_mask = (terminated | truncated).cpu().numpy().flatten()
+        self._step_count[done_mask] = 0
+        return obs, rewards, terminated, truncated, info
+
+    def _compute_rewards(self, obs):
+        policy_obs = obs["policy"]
+        num_envs   = policy_obs.shape[0]
+        rewards    = torch.zeros(num_envs, device=policy_obs.device)
+        # Batch GPU->CPU transfer
+        policy_np = policy_obs.cpu().numpy().astype(float)
+        # Pre-compute eef_obj_dist on GPU
+        eef_obj_dist_batch = None
+        if self._ee_frame is not None:
+            try:
+                ee_w = self._ee_frame.data.target_pos_w[..., 0, :]
+                root_w = self.env.scene["robot"].data.root_pos_w
+                obj_pos_t = policy_obs[:, 18:21]
+                ee_b = ee_w - root_w
+                eef_obj_dist_batch = torch.norm(ee_b - obj_pos_t, dim=1).cpu().numpy()
+            except Exception:
+                pass
+        # Vectorized reward computation
+        try:
+            obs_batch = self._to_batch_dict(policy_np, eef_obj_dist_batch)
+            result = self.reward_fn(obs_batch)
+            if isinstance(result, dict):
+                # result values are arrays of shape (num_envs,)
+                total_arr = result.get("total", sum(
+                    v for k, v in result.items() if k != "total"
+                ))
+                total_arr = np.clip(total_arr, -50.0, 50.0)
+                total_arr = np.nan_to_num(total_arr, nan=0.0)
+                rewards = torch.tensor(total_arr, dtype=torch.float32, device=policy_obs.device)
+                # Build per-env component dicts for TES
+                comp_keys = [k for k in result.keys() if k != "total"]
+                reward_components_batch = [
+                    {k: float(result[k][i]) for k in comp_keys}
+                    for i in range(num_envs)
+                ]
+            else:
+                # Scalar or array return without dict
+                total_arr = np.clip(np.atleast_1d(result), -50.0, 50.0)
+                total_arr = np.nan_to_num(total_arr, nan=0.0)
+                rewards = torch.tensor(total_arr, dtype=torch.float32, device=policy_obs.device)
+                reward_components_batch = [{"total_reward": float(total_arr[i])} for i in range(num_envs)]
+        except Exception as e:
+            print(f"[WARN] Reward fn error (vectorized): {e}")
+            # Fallback to per-env loop
+            reward_components_batch = []
+            try:
+                for i in range(num_envs):
+                    obs_dict = self._to_dict(policy_np[i], eef_obj_dist=eef_obj_dist_batch[i] if eef_obj_dist_batch is not None else None)
+                    result = self.reward_fn(obs_dict)
+                    if isinstance(result, dict):
+                        total = float(result.get("total", sum(v for v in result.values() if isinstance(v, (int, float)))))
+                        components = {k: float(v) for k, v in result.items() if k != "total" and isinstance(v, (int, float))}
+                    else:
+                        total = float(result)
+                        components = {"total_reward": total}
+                    total = max(-50.0, min(50.0, total))
+                    if total != total:
+                        total, components = 0.0, {k: 0.0 for k in components}
+                    rewards[i] = total
+                    reward_components_batch.append(components)
+            except Exception as e2:
+                print(f"[WARN] Reward fn fallback error: {e2}")
+                reward_components_batch = [{"total_reward": 0.0}] * num_envs
+        return rewards, reward_components_batch
+
+    def _collect_trajectories(self, obs, rewards, components_batch,
+                               terminated, truncated):
+        policy_obs = obs["policy"]
+        done_mask  = (terminated | truncated).cpu().numpy().flatten()
+        rewards_np = rewards.cpu().numpy().flatten()
+        sample_envs = min(16, policy_obs.shape[0])
+        # Pre-compute eef_obj_dist on GPU for trajectory collection
+        eef_obj_dist_batch = None
+        if self._ee_frame is not None:
+            try:
+                ee_w = self._ee_frame.data.target_pos_w[..., 0, :]
+                root_w = self.env.scene["robot"].data.root_pos_w
+                obj_pos_t = obs["policy"][:, 18:21]
+                ee_b = ee_w - root_w
+                eef_obj_dist_batch = torch.norm(ee_b - obj_pos_t, dim=1).cpu().numpy()
+            except Exception:
+                pass
+        policy_np = policy_obs[:sample_envs].cpu().numpy().astype(float)
+        for i in range(sample_envs):
+            obs_dict = self._to_dict(policy_np[i], eef_obj_dist=eef_obj_dist_batch[i] if eef_obj_dist_batch is not None else None)
+            components = (components_batch[i]
+                          if i < len(components_batch) else {"total_reward": 0.0})
+            self.collector.record_step(
+                env_id=i, obs_dict=obs_dict,
+                reward_components=components,
+                total_reward=float(rewards_np[i]),
+                done=bool(done_mask[i]),
+            )
+
+
+    def _to_batch_dict(self, policy_np, eef_obj_dist_batch=None):
+        """Vectorized obs dict: each value is shape (num_envs,) numpy array."""
+        num_envs = policy_np.shape[0]
+
+        if args.task == "lift":
+            obj_pos = policy_np[:, 18:21]
+            target_pos = policy_np[:, 21:24]
+            goal_dist = np.linalg.norm(obj_pos - target_pos, axis=1)
+            return {
+                "obj_pos_x":      policy_np[:, 18],
+                "obj_pos_y":      policy_np[:, 19],
+                "obj_pos_z":      policy_np[:, 20],
+                "target_pos_x":   policy_np[:, 21],
+                "target_pos_y":   policy_np[:, 22],
+                "target_pos_z":   policy_np[:, 23],
+                "obj_goal_dist":  goal_dist,
+                "gripper_open":   policy_np[:, 7],
+                "joint_vel_norm": np.linalg.norm(policy_np[:, 9:18], axis=1),
+                "action_rate":    np.linalg.norm(policy_np[:, 28:37], axis=1),
+                "eef_obj_dist":   eef_obj_dist_batch if eef_obj_dist_batch is not None else goal_dist,
+            }
+
+        elif args.task == "cabinet":
+            to_target = policy_np[:, 18:21]
+            return {
+                "joint_pos_norm": np.linalg.norm(policy_np[:, 0:9], axis=1),
+                "joint_vel_norm": np.linalg.norm(policy_np[:, 9:18], axis=1),
+                "to_target_x":    policy_np[:, 18],
+                "to_target_y":    policy_np[:, 19],
+                "to_target_z":    policy_np[:, 20],
+                "dist_to_handle": np.linalg.norm(to_target, axis=1),
+                "drawer_pos":     policy_np[:, 21],
+                "drawer_vel":     policy_np[:, 22],
+                "drawer_open":    (policy_np[:, 21] > 0.35).astype(float),
+            }
+
+        elif args.task == "anymal":
+            lin_vel = policy_np[:, 0:3]
+            ang_vel = policy_np[:, 3:6]
+            commands = policy_np[:, 9:12]
+            lin_err = np.linalg.norm(commands[:, 0:2] - lin_vel[:, 0:2], axis=1)
+            yaw_err = np.abs(commands[:, 2] - ang_vel[:, 2])
+            return {
+                "lin_vel_x":      lin_vel[:, 0],
+                "lin_vel_y":      lin_vel[:, 1],
+                "lin_vel_z":      lin_vel[:, 2],
+                "ang_vel_z":      ang_vel[:, 2],
+                "cmd_lin_vel_x":  commands[:, 0],
+                "cmd_lin_vel_y":  commands[:, 1],
+                "cmd_yaw_rate":   commands[:, 2],
+                "lin_vel_error":  lin_err,
+                "yaw_error":      yaw_err,
+                "joint_vel_norm": np.linalg.norm(policy_np[:, 24:36], axis=1),
+                "action_rate":    np.linalg.norm(policy_np[:, 36:48], axis=1),
+                "base_tilt":      np.linalg.norm(policy_np[:, 6:8], axis=1),
+                "tracking_error": -(lin_err + yaw_err),
+            }
+
+    def _to_dict(self, d: np.ndarray, eef_obj_dist=None) -> dict:
+        """按 task 分发，各自只暴露语义明确的 obs key。"""
+
+        if args.task == "lift":
+            # obs顺序: joint_pos(9) + joint_vel(9) + obj_pos(3) + target_pos(7) + actions(9)
+            obj_pos    = d[18:21]
+            target_pos = d[21:24]  # target x,y,z (d[24:28]是orientation)
+            goal_dist  = float(np.linalg.norm(obj_pos - target_pos))
+            return {
+                "obj_pos_x":      float(obj_pos[0]),
+                "obj_pos_y":      float(obj_pos[1]),
+                "obj_pos_z":      float(obj_pos[2]),
+                "target_pos_x":   float(target_pos[0]),
+                "target_pos_y":   float(target_pos[1]),
+                "target_pos_z":   float(target_pos[2]),
+                "obj_goal_dist":  goal_dist,
+                "gripper_open":   float(d[7]),
+                "joint_vel_norm": float(np.linalg.norm(d[9:18])),
+                "action_rate":    float(np.linalg.norm(d[28:37])),
+                "eef_obj_dist":   float(eef_obj_dist) if eef_obj_dist is not None else goal_dist,
+            }
+
+        elif args.task == "cabinet":
+            # obs(23): dof_pos_scaled(9) + joint_vel(9) +
+            #          to_target(3) + drawer_pos(1) + drawer_vel(1)
+            to_target  = d[18:21]
+            drawer_pos = float(d[21])
+            drawer_vel = float(d[22])
+            return {
+                "joint_pos_norm": float(np.linalg.norm(d[0:9])),
+                "joint_vel_norm": float(np.linalg.norm(d[9:18])),
+                "to_target_x":    float(to_target[0]),
+                "to_target_y":    float(to_target[1]),
+                "to_target_z":    float(to_target[2]),
+                "dist_to_handle": float(np.linalg.norm(to_target)),
+                "drawer_pos":     drawer_pos,
+                "drawer_vel":     drawer_vel,
+                "drawer_open":    float(drawer_pos > 0.35),
+            }
+
+        elif args.task == "anymal":
+            # obs(48): lin_vel_b(3) + ang_vel_b(3) + gravity_b(3) +
+            #          commands(3) + joint_pos-default(12) +
+            #          joint_vel(12) + actions(12)
+            lin_vel  = d[0:3]
+            ang_vel  = d[3:6]
+            commands = d[9:12]
+            lin_err  = float(np.linalg.norm(commands[0:2] - lin_vel[0:2]))
+            yaw_err  = float(abs(commands[2] - ang_vel[2]))
+            return {
+                "lin_vel_x":      float(lin_vel[0]),
+                "lin_vel_y":      float(lin_vel[1]),
+                "lin_vel_z":      float(lin_vel[2]),
+                "ang_vel_z":      float(ang_vel[2]),
+                "cmd_lin_vel_x":  float(commands[0]),
+                "cmd_lin_vel_y":  float(commands[1]),
+                "cmd_yaw_rate":   float(commands[2]),
+                "lin_vel_error":  lin_err,
+                "yaw_error":      yaw_err,
+                "joint_vel_norm": float(np.linalg.norm(d[24:36])),
+                "action_rate":    float(np.linalg.norm(d[36:48])),
+                "base_tilt":      float(np.linalg.norm(d[6:8])),
+                "tracking_error": -(lin_err + yaw_err),
+            }
+
+
+# ══════════════════════════════════════════════════════════════════════
+# main — 与原版逻辑完全一致，只换 EnvCfg / Env / PPORunnerCfg
+# ══════════════════════════════════════════════════════════════════════
+
+def main():
+    # 按 task 更新合法 obs key 集合
+    import llm.reward_parser as _rp
+    if args.task == "cabinet":
+        _rp.VALID_OBS_KEYS = {
+            "joint_pos_norm", "joint_vel_norm",
+            "to_target_x", "to_target_y", "to_target_z",
+            "dist_to_handle", "drawer_pos", "drawer_vel", "drawer_open",
+        }
+    elif args.task == "anymal":
+        _rp.VALID_OBS_KEYS = {
+            "lin_vel_x", "lin_vel_y", "lin_vel_z",
+            "ang_vel_z", "cmd_lin_vel_x", "cmd_lin_vel_y", "cmd_yaw_rate",
+            "lin_vel_error", "yaw_error",
+            "joint_vel_norm", "action_rate", "base_tilt", "tracking_error",
+        }
+    # lift: 保持 reward_parser.py 原始默认值不变
+
+    with open(args.reward_fn, "r") as f:
+        code = f.read()
+    set_task(args.task)
+    reward_fn = load_reward_fn(code)
+    ok, msg   = test_reward_fn(reward_fn)
+    print(f"[INFO] Task={args.task} | Reward fn: {msg}")
+
+    collector = None
+    if args.collect_trajectory:
+        from core.trajectory_collector import TrajectoryCollector
+        collector = TrajectoryCollector(max_episodes=50, max_steps_per_ep=500)
+        print("[INFO] Trajectory collection ENABLED")
+
+    # ── 构建环境（按 task 分支） ───────────────────────────────────────
+    if args.task == "lift":
+        env_cfg = FrankaCubeLiftEnvCfg()
+        env_cfg.scene.num_envs = args.num_envs
+        env_cfg.seed = args.seed
+        for attr in ["reaching_object", "lifting_object", "object_goal_tracking",
+                     "object_goal_tracking_fine_grained", "action_rate", "joint_vel"]:
+            if hasattr(env_cfg.rewards, attr):
+                getattr(env_cfg.rewards, attr).weight = 0.0
+        from isaaclab.envs import ManagerBasedRLEnv
+        env = ManagerBasedRLEnv(cfg=env_cfg)
+        runner_cfg = LiftCubePPORunnerCfg()
+
+    elif args.task == "cabinet":
+        env_cfg = FrankaCabinetEnvCfg()
+        env_cfg.scene.num_envs = args.num_envs
+        env = FrankaCabinetEnv(cfg=env_cfg)
+        runner_cfg = FrankaCabinetPPORunnerCfg()
+
+    elif args.task == "anymal":
+        env_cfg = AnymalCFlatEnvCfg()
+        env_cfg.scene.num_envs = args.num_envs
+        env = AnymalCEnv(cfg=env_cfg)
+        runner_cfg = AnymalCFlatPPORunnerCfg()
+
+    env = EurekaRewardWrapper(env, reward_fn, collector=collector)
+
+    # ── PPO 配置（原版逻辑） ──────────────────────────────────────────
+    runner_cfg.max_iterations  = args.rl_iters
+    runner_cfg.experiment_name = os.path.basename(args.log_dir)
+
+    installed_version = pkg_version("rsl-rl-lib")
+    runner_cfg = handle_deprecated_rsl_rl_cfg(runner_cfg, installed_version)
+
+    env_wrapped = RslRlVecEnvWrapper(env, clip_actions=runner_cfg.clip_actions)
+    os.makedirs(args.log_dir, exist_ok=True)
+
+    runner = OnPolicyRunner(
+        env_wrapped,
+        runner_cfg.to_dict(),
+        log_dir=args.log_dir,
+        device="cuda:0",
+    )
+    runner.learn(num_learning_iterations=args.rl_iters, init_at_random_ep_len=True)
+
+    stats = parse_tb_stats(args.log_dir)
+
+    # ── TES 分析（原版逻辑完全不变） ──────────────────────────────────
+    tes_summary = ""
+    if args.collect_trajectory and collector is not None:
+        traj_path = args.trajectory_path or f"{args.log_dir}/trajectory.npz"
+        collector.save(traj_path)
+        from core.trajectory_collector import TrajectoryCollector
+        from core.tes import generate_tes_report, report_to_prompt_text
+        episodes    = TrajectoryCollector.load(traj_path)
+        report      = generate_tes_report(episodes)
+        tes_summary = report_to_prompt_text(report)
+        tes_path    = args.tes_report_path or f"{args.log_dir}/tes_report.json"
+
+        def _f(v):
+            if hasattr(v, "item"):            return v.item()
+            if isinstance(v, np.floating):    return float(v)
+            if isinstance(v, np.integer):     return int(v)
+            if isinstance(v, np.bool_):       return bool(v)
+            return v
+
+        with open(tes_path, "w") as f:
+            json.dump({
+                "summary":       report.summary,
+                "n_episodes":    int(report.n_episodes),
+                "avg_episode_length": _f(report.avg_episode_length),
+                "crash_windows": [
+                    {"start_step": cw.start_step, "end_step": cw.end_step,
+                     "severity": _f(cw.severity), "reward_drop": _f(cw.reward_drop)}
+                    for cw in report.crash_windows
+                ],
+                "component_attributions": [
+                    {"name": ca.name,
+                     "variance_contribution": _f(ca.variance_contribution),
+                     "mean_value": _f(ca.mean_value), "trend": ca.trend,
+                     "is_problematic": _f(ca.is_problematic)}
+                    for ca in report.component_attributions
+                ],
+                "phase_stats": [
+                    {"phase": ps.phase, "mean_reward": _f(ps.mean_reward),
+                     "failure_rate": _f(ps.failure_rate),
+                     "dominant_component": ps.dominant_component}
+                    for ps in report.phase_stats
+                ],
+            }, f, indent=2)
+        print(f"[INFO] TES report saved to {tes_path}")
+        print(f"[INFO] TES summary:\n{tes_summary}")
+
+    stats["tes_summary"] = tes_summary
+    os.makedirs(os.path.dirname(args.output), exist_ok=True)
+    with open(args.output, "w") as f:
+        json.dump(stats, f, indent=2)
+    print(f"[INFO] Stats saved to {args.output}")
+    print(f"[INFO] Stats: {stats}")
+
+    env_wrapped.close()
+    simulation_app.close()
+
+
+def parse_tb_stats(log_dir: str) -> dict:
+    from tensorboard.backend.event_processing.event_accumulator import EventAccumulator
+    import glob
+
+    # 按 task 选默认值和 tag 映射
+    if args.task == "lift":
+        stats = {
+            "mean_reward": 0.0, "mean_episode_length": 0.0,
+            "success_rate": 0.0, "reaching_object": 0.0,
+            "lifting_object": 0.0, "object_goal_tracking": 0.0,
+            "position_error": 1.0, "orientation_error": 1.0,
+        }
+        tag_map = {
+            "Train/mean_reward":                     "mean_reward",
+            "Train/mean_episode_length":             "mean_episode_length",
+            "Metrics/object_pose/position_error":    "position_error",
+            "Metrics/object_pose/orientation_error": "orientation_error",
+            "Episode_Reward/reaching_object":        "reaching_object",
+            "Episode_Reward/lifting_object":         "lifting_object",
+            "Episode_Reward/object_goal_tracking":   "object_goal_tracking",
+        }
+    elif args.task == "cabinet":
+        stats = {
+            "mean_reward": 0.0, "mean_episode_length": 0.0,
+            "success_rate": 0.0, "drawer_pos": 0.0,
+            "position_error": 1.0,
+        }
+        tag_map = {
+            "Train/mean_reward":         "mean_reward",
+            "Train/mean_episode_length": "mean_episode_length",
+            "Episode/open_reward": "drawer_pos",
+        }
+    elif args.task == "anymal":
+        stats = {
+            "mean_reward": 0.0, "mean_episode_length": 0.0,
+            "success_rate": 0.0, "track_lin_vel": 0.0,
+            "track_ang_vel": 0.0, "position_error": 1.0,
+        }
+        tag_map = {
+            "Train/mean_reward":                   "mean_reward",
+            "Train/mean_episode_length":           "mean_episode_length",
+            "Episode_Reward/track_lin_vel_xy_exp": "track_lin_vel",
+            "Episode_Reward/track_ang_vel_z_exp":  "track_ang_vel",
+        }
+
+    tf_files = glob.glob(os.path.join(log_dir, "events.out.tfevents.*"))
+    if tf_files:
+        ea = EventAccumulator(tf_files[0])
+        ea.Reload()
+        scalars = ea.Tags().get("scalars", [])
+        for tb_tag, stat_key in tag_map.items():
+            if tb_tag in scalars:
+                events = ea.Scalars(tb_tag)
+                if events:
+                    stats[stat_key] = float(events[-1].value)
+
+    # postprocess
+    if args.task == "lift":
+        ep_len = stats["mean_episode_length"]
+        stats["success_rate"] = (1.0 if ep_len >= 490
+                                 else 0.5 if ep_len >= 300 else 0.0)
+    elif args.task == "cabinet":
+        dp = stats.get("drawer_pos", 0.0)
+        stats["success_rate"]  = float(dp > 0.39)
+        stats["position_error"] = max(0.0, 1.0 - dp)
+    elif args.task == "anymal":
+        track = stats.get("track_lin_vel", 0.0) + stats.get("track_ang_vel", 0.0)
+        stats["success_rate"]  = float(track > 0.7)
+        stats["position_error"] = max(0.0, 2.0 - track)
+
+    return stats
+
+
+if __name__ == "__main__":
+    main()

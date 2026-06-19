@@ -1,0 +1,456 @@
+2026-04-18 00:44:27,216 [INFO] === EUREKA-TRA (Evolutionary) iterations=5 candidates=16 envs=4096 rl_iters=1500 gpus=2 run=20260418_004427_s42 ===
+2026-04-18 00:44:27,277 [INFO] 
+============================================================
+2026-04-18 00:44:27,277 [INFO] LLM Iteration 1/5
+2026-04-18 00:44:27,277 [INFO] ============================================================
+2026-04-18 00:44:27,277 [INFO] Generating 16 candidates from QwenMax...
+2026-04-18 00:44:41,315 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:44:41,328 [INFO]   Candidate 1: OK (OK dict (total=-1.5750, 6 components))
+2026-04-18 00:44:54,349 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:44:54,352 [INFO]   Candidate 2: OK (OK dict (total=-0.7850, 6 components))
+2026-04-18 00:45:12,120 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:45:12,123 [INFO]   Candidate 3: OK (OK dict (total=-1.0500, 6 components))
+2026-04-18 00:45:25,940 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:45:25,944 [INFO]   Candidate 4: OK (OK dict (total=4.1407, 6 components))
+2026-04-18 00:45:40,140 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:45:40,144 [INFO]   Candidate 5: OK (OK dict (total=-2.3000, 6 components))
+2026-04-18 00:45:59,570 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:45:59,574 [INFO]   Candidate 6: OK (OK dict (total=3.4815, 6 components))
+2026-04-18 00:46:10,410 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:46:10,414 [INFO]   Candidate 7: OK (OK dict (total=-3.3000, 6 components))
+2026-04-18 00:46:22,238 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:46:22,242 [INFO]   Candidate 8: OK (OK dict (total=-1.8000, 6 components))
+2026-04-18 00:46:35,258 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:46:35,262 [INFO]   Candidate 9: OK (OK dict (total=4.7815, 6 components))
+2026-04-18 00:46:53,185 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:46:53,189 [INFO]   Candidate 10: OK (OK dict (total=-1.7000, 6 components))
+2026-04-18 00:47:08,333 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:47:08,337 [INFO]   Candidate 11: OK (OK dict (total=4.3815, 6 components))
+2026-04-18 00:47:21,203 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:47:21,207 [INFO]   Candidate 12: OK (OK dict (total=-2.9000, 6 components))
+2026-04-18 00:47:41,948 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:47:41,952 [INFO]   Candidate 13: OK (OK dict (total=-1.8500, 6 components))
+2026-04-18 00:47:56,307 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:47:56,314 [INFO]   Candidate 14: OK (OK dict (total=-2.3000, 6 components))
+2026-04-18 00:48:09,298 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:48:09,303 [INFO]   Candidate 15: OK (OK dict (total=4.4869, 6 components))
+2026-04-18 00:48:24,162 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:48:24,166 [INFO]   Candidate 16: OK (OK dict (total=-7.6000, 5 components))
+2026-04-18 00:48:24,166 [INFO] Valid candidates: 16/16
+2026-04-18 00:48:24,166 [INFO] Training 16 candidates (2 GPUs parallel)...
+2026-04-18 00:48:24,166 [INFO]   Batch 1/8: candidates 1-2
+2026-04-18 04:32:41,527 [INFO]   Batch 1 complete: 2 total results so far
+2026-04-18 04:32:51,538 [INFO]   Batch 2/8: candidates 3-4
+2026-04-18 08:11:14,399 [INFO]   Batch 2 complete: 4 total results so far
+2026-04-18 08:11:24,410 [INFO]   Batch 3/8: candidates 5-6
+2026-04-18 12:00:02,350 [INFO]   Batch 3 complete: 6 total results so far
+2026-04-18 12:00:12,358 [INFO]   Batch 4/8: candidates 7-8
+2026-04-18 15:23:39,154 [INFO]   Batch 4 complete: 8 total results so far
+2026-04-18 15:23:49,165 [INFO]   Batch 5/8: candidates 9-10
+2026-04-18 19:09:23,088 [INFO]   Batch 5 complete: 10 total results so far
+2026-04-18 19:09:33,098 [INFO]   Batch 6/8: candidates 11-12
+2026-04-18 22:56:21,914 [INFO]   Batch 6 complete: 12 total results so far
+2026-04-18 22:56:31,924 [INFO]   Batch 7/8: candidates 13-14
+2026-04-19 02:59:40,236 [INFO]   Batch 7 complete: 14 total results so far
+2026-04-19 02:59:50,246 [INFO]   Batch 8/8: candidates 15-16
+2026-04-19 03:10:28,029 [INFO]   Batch 8 complete: 16 total results so far
+2026-04-19 03:10:28,030 [INFO] New global best! pos_err=0.2243
+2026-04-19 03:10:28,032 [INFO] Best candidate: 2, pos_err=0.2243, tes=YES
+2026-04-19 03:10:28,034 [INFO] Iter 1 complete | best=2 | pos_err=0.2243 | tes=YES | valid=12/16
+2026-04-19 03:10:28,034 [INFO]   Rank 1: candidate 2 pos_err=0.2243 tes=YES ★
+2026-04-19 03:10:28,034 [INFO]   Rank 2: candidate 4 pos_err=0.2311 tes=YES
+2026-04-19 03:10:28,034 [INFO]   Rank 3: candidate 13 pos_err=0.2311 tes=YES
+2026-04-19 03:10:28,034 [INFO]   Rank 4: candidate 8 pos_err=0.2497 tes=YES
+2026-04-19 03:10:28,034 [INFO]   Rank 5: candidate 9 pos_err=0.2521 tes=YES
+2026-04-19 03:10:28,034 [INFO]   Rank 6: candidate 12 pos_err=0.2533 tes=YES
+2026-04-19 03:10:28,034 [INFO]   Rank 7: candidate 3 pos_err=0.2565 tes=YES
+2026-04-19 03:10:28,034 [INFO]   Rank 8: candidate 5 pos_err=0.2590 tes=YES
+2026-04-19 03:10:28,034 [INFO]   Rank 9: candidate 7 pos_err=0.2680 tes=YES
+2026-04-19 03:10:28,034 [INFO]   Rank 10: candidate 0 pos_err=0.2921 tes=YES
+2026-04-19 03:10:28,035 [INFO]   Rank 11: candidate 1 pos_err=0.3110 tes=YES
+2026-04-19 03:10:28,035 [INFO]   Rank 12: candidate 11 pos_err=0.5340 tes=YES
+2026-04-19 03:10:28,035 [INFO]   Rank 13: candidate 6 pos_err=1.0000 tes=NO
+2026-04-19 03:10:28,035 [INFO]   Rank 14: candidate 14 pos_err=1.0000 tes=NO
+2026-04-19 03:10:28,035 [INFO]   Rank 15: candidate 15 pos_err=1.0000 tes=NO
+2026-04-19 03:10:28,035 [INFO]   Rank 16: candidate 10 pos_err=1.0926 tes=YES
+2026-04-19 03:10:28,035 [INFO] 
+============================================================
+2026-04-19 03:10:28,035 [INFO] LLM Iteration 2/5
+2026-04-19 03:10:28,035 [INFO] ============================================================
+2026-04-19 03:10:28,035 [INFO] TES summary injected (239 chars)
+2026-04-19 03:10:28,035 [INFO] Generating 16 candidates from QwenMax...
+2026-04-19 03:10:48,066 [INFO] Retrying request to /chat/completions in 0.464958 seconds
+2026-04-19 03:11:08,561 [INFO] Retrying request to /chat/completions in 0.888526 seconds
+2026-04-19 03:11:29,485 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:11:50,511 [INFO] Retrying request to /chat/completions in 0.467731 seconds
+2026-04-19 03:12:11,013 [INFO] Retrying request to /chat/completions in 0.786302 seconds
+2026-04-19 03:12:31,827 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:12:53,862 [INFO] Retrying request to /chat/completions in 0.380573 seconds
+2026-04-19 03:13:14,271 [INFO] Retrying request to /chat/completions in 0.782038 seconds
+2026-04-19 03:13:35,081 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:13:39,086 [WARNING]   Candidate 1: error (LLM failed after 3 retries)
+2026-04-19 03:13:59,115 [INFO] Retrying request to /chat/completions in 0.486884 seconds
+2026-04-19 03:14:19,633 [INFO] Retrying request to /chat/completions in 0.868355 seconds
+2026-04-19 03:14:40,528 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:15:01,565 [INFO] Retrying request to /chat/completions in 0.426024 seconds
+2026-04-19 03:15:22,021 [INFO] Retrying request to /chat/completions in 0.984405 seconds
+2026-04-19 03:15:43,037 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:16:05,070 [INFO] Retrying request to /chat/completions in 0.471013 seconds
+2026-04-19 03:16:25,573 [INFO] Retrying request to /chat/completions in 0.902775 seconds
+2026-04-19 03:16:46,502 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:16:50,507 [WARNING]   Candidate 2: error (LLM failed after 3 retries)
+2026-04-19 03:17:10,535 [INFO] Retrying request to /chat/completions in 0.485429 seconds
+2026-04-19 03:17:31,050 [INFO] Retrying request to /chat/completions in 0.991517 seconds
+2026-04-19 03:17:52,076 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:18:13,107 [INFO] Retrying request to /chat/completions in 0.415000 seconds
+2026-04-19 03:18:33,563 [INFO] Retrying request to /chat/completions in 0.751144 seconds
+2026-04-19 03:18:54,341 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:19:16,380 [INFO] Retrying request to /chat/completions in 0.380300 seconds
+2026-04-19 03:19:36,789 [INFO] Retrying request to /chat/completions in 0.862082 seconds
+2026-04-19 03:19:57,685 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:20:01,690 [WARNING]   Candidate 3: error (LLM failed after 3 retries)
+2026-04-19 03:20:21,719 [INFO] Retrying request to /chat/completions in 0.405274 seconds
+2026-04-19 03:20:42,157 [INFO] Retrying request to /chat/completions in 0.911768 seconds
+2026-04-19 03:21:03,095 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:21:24,133 [INFO] Retrying request to /chat/completions in 0.426609 seconds
+2026-04-19 03:21:44,589 [INFO] Retrying request to /chat/completions in 0.974206 seconds
+2026-04-19 03:22:05,601 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:22:27,630 [INFO] Retrying request to /chat/completions in 0.401534 seconds
+2026-04-19 03:22:48,071 [INFO] Retrying request to /chat/completions in 0.784169 seconds
+2026-04-19 03:23:08,883 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:23:12,885 [WARNING]   Candidate 4: error (LLM failed after 3 retries)
+2026-04-19 03:23:32,913 [INFO] Retrying request to /chat/completions in 0.387837 seconds
+2026-04-19 03:23:53,330 [INFO] Retrying request to /chat/completions in 0.802085 seconds
+2026-04-19 03:24:14,166 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:24:35,197 [INFO] Retrying request to /chat/completions in 0.450734 seconds
+2026-04-19 03:24:55,686 [INFO] Retrying request to /chat/completions in 0.876594 seconds
+2026-04-19 03:25:16,589 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:25:38,631 [INFO] Retrying request to /chat/completions in 0.402623 seconds
+2026-04-19 03:25:59,081 [INFO] Retrying request to /chat/completions in 0.999032 seconds
+2026-04-19 03:26:20,119 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:26:24,124 [WARNING]   Candidate 5: error (LLM failed after 3 retries)
+2026-04-19 03:26:44,155 [INFO] Retrying request to /chat/completions in 0.473277 seconds
+2026-04-19 03:27:04,667 [INFO] Retrying request to /chat/completions in 0.809320 seconds
+2026-04-19 03:27:25,502 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:27:46,542 [INFO] Retrying request to /chat/completions in 0.382638 seconds
+2026-04-19 03:28:06,975 [INFO] Retrying request to /chat/completions in 0.924298 seconds
+2026-04-19 03:28:27,935 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:28:49,967 [INFO] Retrying request to /chat/completions in 0.461498 seconds
+2026-04-19 03:29:10,465 [INFO] Retrying request to /chat/completions in 0.876270 seconds
+2026-04-19 03:29:31,369 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:29:35,373 [WARNING]   Candidate 6: error (LLM failed after 3 retries)
+2026-04-19 03:29:55,408 [INFO] Retrying request to /chat/completions in 0.442735 seconds
+2026-04-19 03:30:15,880 [INFO] Retrying request to /chat/completions in 0.847741 seconds
+2026-04-19 03:30:36,763 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:30:57,794 [INFO] Retrying request to /chat/completions in 0.446694 seconds
+2026-04-19 03:31:18,274 [INFO] Retrying request to /chat/completions in 0.777958 seconds
+2026-04-19 03:31:39,083 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:32:01,118 [INFO] Retrying request to /chat/completions in 0.407315 seconds
+2026-04-19 03:32:21,554 [INFO] Retrying request to /chat/completions in 0.856437 seconds
+2026-04-19 03:32:42,444 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:32:46,448 [WARNING]   Candidate 7: error (LLM failed after 3 retries)
+2026-04-19 03:33:06,479 [INFO] Retrying request to /chat/completions in 0.450874 seconds
+2026-04-19 03:33:26,963 [INFO] Retrying request to /chat/completions in 0.836947 seconds
+2026-04-19 03:33:47,829 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:34:08,863 [INFO] Retrying request to /chat/completions in 0.379528 seconds
+2026-04-19 03:34:29,277 [INFO] Retrying request to /chat/completions in 0.800534 seconds
+2026-04-19 03:34:50,114 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:35:12,147 [INFO] Retrying request to /chat/completions in 0.481921 seconds
+2026-04-19 03:35:32,659 [INFO] Retrying request to /chat/completions in 0.796866 seconds
+2026-04-19 03:35:53,483 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:35:57,487 [WARNING]   Candidate 8: error (LLM failed after 3 retries)
+2026-04-19 03:36:16,086 [INFO] Retrying request to /chat/completions in 0.495421 seconds
+2026-04-19 03:36:36,610 [INFO] Retrying request to /chat/completions in 0.902782 seconds
+2026-04-19 03:36:57,547 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:37:18,576 [INFO] Retrying request to /chat/completions in 0.433633 seconds
+2026-04-19 03:37:39,034 [INFO] Retrying request to /chat/completions in 0.920424 seconds
+2026-04-19 03:37:59,982 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:38:22,012 [INFO] Retrying request to /chat/completions in 0.452827 seconds
+2026-04-19 03:38:42,491 [INFO] Retrying request to /chat/completions in 0.874300 seconds
+2026-04-19 03:39:03,393 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:39:07,397 [WARNING]   Candidate 9: error (LLM failed after 3 retries)
+2026-04-19 03:39:27,428 [INFO] Retrying request to /chat/completions in 0.397858 seconds
+2026-04-19 03:39:47,852 [INFO] Retrying request to /chat/completions in 0.978859 seconds
+2026-04-19 03:40:08,858 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:40:29,942 [INFO] Retrying request to /chat/completions in 0.387361 seconds
+2026-04-19 03:40:50,357 [INFO] Retrying request to /chat/completions in 0.766832 seconds
+2026-04-19 03:41:11,150 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:41:33,186 [INFO] Retrying request to /chat/completions in 0.461742 seconds
+2026-04-19 03:41:53,674 [INFO] Retrying request to /chat/completions in 0.805812 seconds
+2026-04-19 03:42:14,503 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:42:18,507 [WARNING]   Candidate 10: error (LLM failed after 3 retries)
+2026-04-19 03:42:38,537 [INFO] Retrying request to /chat/completions in 0.441662 seconds
+2026-04-19 03:42:59,005 [INFO] Retrying request to /chat/completions in 0.815028 seconds
+2026-04-19 03:43:19,848 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:43:40,876 [INFO] Retrying request to /chat/completions in 0.418750 seconds
+2026-04-19 03:44:01,322 [INFO] Retrying request to /chat/completions in 0.887503 seconds
+2026-04-19 03:44:22,236 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:44:44,266 [INFO] Retrying request to /chat/completions in 0.401031 seconds
+2026-04-19 03:45:04,694 [INFO] Retrying request to /chat/completions in 0.807106 seconds
+2026-04-19 03:45:25,528 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:45:29,533 [WARNING]   Candidate 11: error (LLM failed after 3 retries)
+2026-04-19 03:45:49,561 [INFO] Retrying request to /chat/completions in 0.385820 seconds
+2026-04-19 03:46:09,974 [INFO] Retrying request to /chat/completions in 0.800536 seconds
+2026-04-19 03:46:30,801 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:46:51,830 [INFO] Retrying request to /chat/completions in 0.427907 seconds
+2026-04-19 03:47:12,284 [INFO] Retrying request to /chat/completions in 0.951948 seconds
+2026-04-19 03:47:33,263 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:47:55,293 [INFO] Retrying request to /chat/completions in 0.403283 seconds
+2026-04-19 03:48:15,723 [INFO] Retrying request to /chat/completions in 0.832284 seconds
+2026-04-19 03:48:36,583 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:48:40,587 [WARNING]   Candidate 12: error (LLM failed after 3 retries)
+2026-04-19 03:49:00,615 [INFO] Retrying request to /chat/completions in 0.391701 seconds
+2026-04-19 03:49:21,033 [INFO] Retrying request to /chat/completions in 0.905016 seconds
+2026-04-19 03:49:41,965 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:50:02,994 [INFO] Retrying request to /chat/completions in 0.398141 seconds
+2026-04-19 03:50:23,419 [INFO] Retrying request to /chat/completions in 0.909744 seconds
+2026-04-19 03:50:44,358 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:51:06,388 [INFO] Retrying request to /chat/completions in 0.376582 seconds
+2026-04-19 03:51:26,791 [INFO] Retrying request to /chat/completions in 0.906996 seconds
+2026-04-19 03:51:47,725 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:51:51,729 [WARNING]   Candidate 13: error (LLM failed after 3 retries)
+2026-04-19 03:52:11,757 [INFO] Retrying request to /chat/completions in 0.400987 seconds
+2026-04-19 03:52:32,185 [INFO] Retrying request to /chat/completions in 0.972290 seconds
+2026-04-19 03:52:53,184 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:53:14,209 [INFO] Retrying request to /chat/completions in 0.387149 seconds
+2026-04-19 03:53:34,619 [INFO] Retrying request to /chat/completions in 0.872335 seconds
+2026-04-19 03:53:55,519 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:54:17,545 [INFO] Retrying request to /chat/completions in 0.397944 seconds
+2026-04-19 03:54:37,969 [INFO] Retrying request to /chat/completions in 0.905620 seconds
+2026-04-19 03:54:58,902 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:55:02,906 [WARNING]   Candidate 14: error (LLM failed after 3 retries)
+2026-04-19 03:55:22,934 [INFO] Retrying request to /chat/completions in 0.382858 seconds
+2026-04-19 03:55:43,342 [INFO] Retrying request to /chat/completions in 0.803262 seconds
+2026-04-19 03:56:04,172 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:56:25,201 [INFO] Retrying request to /chat/completions in 0.380789 seconds
+2026-04-19 03:56:45,609 [INFO] Retrying request to /chat/completions in 0.834333 seconds
+2026-04-19 03:57:06,470 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 03:57:28,501 [INFO] Retrying request to /chat/completions in 0.431020 seconds
+2026-04-19 03:57:48,960 [INFO] Retrying request to /chat/completions in 0.966398 seconds
+2026-04-19 03:58:09,954 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 03:58:13,958 [WARNING]   Candidate 15: error (LLM failed after 3 retries)
+2026-04-19 03:58:33,986 [INFO] Retrying request to /chat/completions in 0.489059 seconds
+2026-04-19 03:58:54,502 [INFO] Retrying request to /chat/completions in 0.806370 seconds
+2026-04-19 03:59:15,335 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 03:59:36,365 [INFO] Retrying request to /chat/completions in 0.422891 seconds
+2026-04-19 03:59:56,813 [INFO] Retrying request to /chat/completions in 0.963883 seconds
+2026-04-19 04:00:17,804 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:00:39,834 [INFO] Retrying request to /chat/completions in 0.401971 seconds
+2026-04-19 04:01:00,263 [INFO] Retrying request to /chat/completions in 0.763825 seconds
+2026-04-19 04:01:21,053 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:01:25,058 [WARNING]   Candidate 16: error (LLM failed after 3 retries)
+2026-04-19 04:01:25,058 [ERROR] No valid candidates, skip iteration
+2026-04-19 04:01:25,058 [INFO] Valid candidates: 1/16
+2026-04-19 04:01:25,058 [INFO] Training 1 candidates (2 GPUs parallel)...
+2026-04-19 04:01:25,058 [INFO]   Batch 1/1: candidates 1-1
+2026-04-19 04:12:02,320 [INFO]   Batch 1 complete: 1 total results so far
+2026-04-19 04:12:02,320 [WARNING] All candidates failed, using previous best
+2026-04-19 04:12:02,322 [INFO] Iter 2 complete | best=-1 | pos_err=1.0000 | tes=NO | valid=0/1
+2026-04-19 04:12:02,322 [INFO]   Rank 1: candidate 0 pos_err=1.0000 tes=NO
+2026-04-19 04:12:02,322 [INFO] 
+============================================================
+2026-04-19 04:12:02,322 [INFO] LLM Iteration 3/5
+2026-04-19 04:12:02,322 [INFO] ============================================================
+2026-04-19 04:12:02,322 [INFO] No TES summary, using scalar feedback only
+2026-04-19 04:12:02,323 [INFO] Generating 16 candidates from QwenMax...
+2026-04-19 04:12:22,350 [INFO] Retrying request to /chat/completions in 0.452349 seconds
+2026-04-19 04:12:42,829 [INFO] Retrying request to /chat/completions in 0.969348 seconds
+2026-04-19 04:13:03,827 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:13:24,856 [INFO] Retrying request to /chat/completions in 0.400458 seconds
+2026-04-19 04:13:45,283 [INFO] Retrying request to /chat/completions in 0.818261 seconds
+2026-04-19 04:14:06,130 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:14:28,161 [INFO] Retrying request to /chat/completions in 0.490642 seconds
+2026-04-19 04:14:48,677 [INFO] Retrying request to /chat/completions in 0.966927 seconds
+2026-04-19 04:15:09,671 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:15:13,676 [WARNING]   Candidate 1: error (LLM failed after 3 retries)
+2026-04-19 04:15:33,704 [INFO] Retrying request to /chat/completions in 0.485470 seconds
+2026-04-19 04:15:54,215 [INFO] Retrying request to /chat/completions in 0.786744 seconds
+2026-04-19 04:16:15,025 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:16:36,055 [INFO] Retrying request to /chat/completions in 0.447632 seconds
+2026-04-19 04:16:56,529 [INFO] Retrying request to /chat/completions in 0.922398 seconds
+2026-04-19 04:17:17,479 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:17:39,514 [INFO] Retrying request to /chat/completions in 0.387847 seconds
+2026-04-19 04:17:59,928 [INFO] Retrying request to /chat/completions in 0.856306 seconds
+2026-04-19 04:18:20,811 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:18:24,816 [WARNING]   Candidate 2: error (LLM failed after 3 retries)
+2026-04-19 04:18:44,846 [INFO] Retrying request to /chat/completions in 0.491288 seconds
+2026-04-19 04:19:05,363 [INFO] Retrying request to /chat/completions in 0.817030 seconds
+2026-04-19 04:19:26,207 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:19:47,236 [INFO] Retrying request to /chat/completions in 0.475542 seconds
+2026-04-19 04:20:07,738 [INFO] Retrying request to /chat/completions in 0.881961 seconds
+2026-04-19 04:20:28,646 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:20:50,677 [INFO] Retrying request to /chat/completions in 0.461970 seconds
+2026-04-19 04:21:11,165 [INFO] Retrying request to /chat/completions in 0.979414 seconds
+2026-04-19 04:21:32,169 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:21:36,173 [WARNING]   Candidate 3: error (LLM failed after 3 retries)
+2026-04-19 04:21:56,201 [INFO] Retrying request to /chat/completions in 0.387356 seconds
+2026-04-19 04:22:16,615 [INFO] Retrying request to /chat/completions in 0.999717 seconds
+2026-04-19 04:22:37,644 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:22:58,673 [INFO] Retrying request to /chat/completions in 0.435882 seconds
+2026-04-19 04:23:19,134 [INFO] Retrying request to /chat/completions in 0.762174 seconds
+2026-04-19 04:23:39,930 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:24:01,960 [INFO] Retrying request to /chat/completions in 0.396371 seconds
+2026-04-19 04:24:22,382 [INFO] Retrying request to /chat/completions in 0.884366 seconds
+2026-04-19 04:24:43,294 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:24:47,299 [WARNING]   Candidate 4: error (LLM failed after 3 retries)
+2026-04-19 04:25:07,327 [INFO] Retrying request to /chat/completions in 0.440812 seconds
+2026-04-19 04:25:27,792 [INFO] Retrying request to /chat/completions in 0.865149 seconds
+2026-04-19 04:25:48,684 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:26:09,713 [INFO] Retrying request to /chat/completions in 0.437857 seconds
+2026-04-19 04:26:30,177 [INFO] Retrying request to /chat/completions in 0.752375 seconds
+2026-04-19 04:26:50,957 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:27:12,987 [INFO] Retrying request to /chat/completions in 0.399697 seconds
+2026-04-19 04:27:33,413 [INFO] Retrying request to /chat/completions in 0.873247 seconds
+2026-04-19 04:27:54,313 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:27:58,317 [WARNING]   Candidate 5: error (LLM failed after 3 retries)
+2026-04-19 04:28:18,353 [INFO] Retrying request to /chat/completions in 0.429867 seconds
+2026-04-19 04:28:38,811 [INFO] Retrying request to /chat/completions in 0.989538 seconds
+2026-04-19 04:28:59,835 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:29:20,866 [INFO] Retrying request to /chat/completions in 0.476326 seconds
+2026-04-19 04:29:41,376 [INFO] Retrying request to /chat/completions in 0.960048 seconds
+2026-04-19 04:30:02,363 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:30:24,398 [INFO] Retrying request to /chat/completions in 0.447577 seconds
+2026-04-19 04:30:44,875 [INFO] Retrying request to /chat/completions in 0.945078 seconds
+2026-04-19 04:31:05,851 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:31:09,856 [WARNING]   Candidate 6: error (LLM failed after 3 retries)
+2026-04-19 04:31:29,884 [INFO] Retrying request to /chat/completions in 0.440278 seconds
+2026-04-19 04:31:50,357 [INFO] Retrying request to /chat/completions in 0.914759 seconds
+2026-04-19 04:32:11,297 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:32:32,327 [INFO] Retrying request to /chat/completions in 0.479229 seconds
+2026-04-19 04:32:52,844 [INFO] Retrying request to /chat/completions in 0.751566 seconds
+2026-04-19 04:33:13,626 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:33:35,659 [INFO] Retrying request to /chat/completions in 0.375358 seconds
+2026-04-19 04:33:56,069 [INFO] Retrying request to /chat/completions in 0.803317 seconds
+2026-04-19 04:34:16,899 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:34:20,903 [WARNING]   Candidate 7: error (LLM failed after 3 retries)
+2026-04-19 04:34:40,938 [INFO] Retrying request to /chat/completions in 0.486800 seconds
+2026-04-19 04:35:01,453 [INFO] Retrying request to /chat/completions in 0.999732 seconds
+2026-04-19 04:35:22,486 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:35:43,517 [INFO] Retrying request to /chat/completions in 0.392225 seconds
+2026-04-19 04:36:03,943 [INFO] Retrying request to /chat/completions in 0.773792 seconds
+2026-04-19 04:36:24,743 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:36:46,778 [INFO] Retrying request to /chat/completions in 0.443540 seconds
+2026-04-19 04:37:07,257 [INFO] Retrying request to /chat/completions in 0.793630 seconds
+2026-04-19 04:37:28,084 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:37:32,088 [WARNING]   Candidate 8: error (LLM failed after 3 retries)
+2026-04-19 04:37:52,119 [INFO] Retrying request to /chat/completions in 0.400300 seconds
+2026-04-19 04:38:12,553 [INFO] Retrying request to /chat/completions in 0.767378 seconds
+2026-04-19 04:38:33,347 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:38:54,380 [INFO] Retrying request to /chat/completions in 0.385696 seconds
+2026-04-19 04:39:14,795 [INFO] Retrying request to /chat/completions in 0.956655 seconds
+2026-04-19 04:39:35,786 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:39:57,816 [INFO] Retrying request to /chat/completions in 0.458505 seconds
+2026-04-19 04:40:18,315 [INFO] Retrying request to /chat/completions in 0.882489 seconds
+2026-04-19 04:40:39,225 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:40:43,229 [WARNING]   Candidate 9: error (LLM failed after 3 retries)
+2026-04-19 04:41:03,265 [INFO] Retrying request to /chat/completions in 0.465545 seconds
+2026-04-19 04:41:23,769 [INFO] Retrying request to /chat/completions in 0.848921 seconds
+2026-04-19 04:41:44,652 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:42:05,684 [INFO] Retrying request to /chat/completions in 0.455248 seconds
+2026-04-19 04:42:26,169 [INFO] Retrying request to /chat/completions in 0.976809 seconds
+2026-04-19 04:42:47,173 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:43:09,205 [INFO] Retrying request to /chat/completions in 0.489704 seconds
+2026-04-19 04:43:29,723 [INFO] Retrying request to /chat/completions in 0.971425 seconds
+2026-04-19 04:43:50,730 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:43:54,734 [WARNING]   Candidate 10: error (LLM failed after 3 retries)
+2026-04-19 04:44:14,762 [INFO] Retrying request to /chat/completions in 0.381838 seconds
+2026-04-19 04:44:35,177 [INFO] Retrying request to /chat/completions in 0.836772 seconds
+2026-04-19 04:44:56,041 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:45:17,078 [INFO] Retrying request to /chat/completions in 0.491437 seconds
+2026-04-19 04:45:37,598 [INFO] Retrying request to /chat/completions in 0.890166 seconds
+2026-04-19 04:45:58,521 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:46:20,551 [INFO] Retrying request to /chat/completions in 0.488990 seconds
+2026-04-19 04:46:41,069 [INFO] Retrying request to /chat/completions in 0.901800 seconds
+2026-04-19 04:47:02,005 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:47:06,010 [WARNING]   Candidate 11: error (LLM failed after 3 retries)
+2026-04-19 04:47:26,038 [INFO] Retrying request to /chat/completions in 0.392842 seconds
+2026-04-19 04:47:46,457 [INFO] Retrying request to /chat/completions in 0.835119 seconds
+2026-04-19 04:48:07,325 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:48:28,354 [INFO] Retrying request to /chat/completions in 0.400147 seconds
+2026-04-19 04:48:48,783 [INFO] Retrying request to /chat/completions in 0.796884 seconds
+2026-04-19 04:49:09,611 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:49:31,641 [INFO] Retrying request to /chat/completions in 0.400474 seconds
+2026-04-19 04:49:52,068 [INFO] Retrying request to /chat/completions in 0.787078 seconds
+2026-04-19 04:50:12,890 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:50:16,894 [WARNING]   Candidate 12: error (LLM failed after 3 retries)
+2026-04-19 04:50:36,936 [INFO] Retrying request to /chat/completions in 0.480279 seconds
+2026-04-19 04:50:57,448 [INFO] Retrying request to /chat/completions in 0.948234 seconds
+2026-04-19 04:51:18,426 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:51:39,460 [INFO] Retrying request to /chat/completions in 0.485743 seconds
+2026-04-19 04:51:59,972 [INFO] Retrying request to /chat/completions in 0.982693 seconds
+2026-04-19 04:52:20,990 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:52:43,029 [INFO] Retrying request to /chat/completions in 0.478166 seconds
+2026-04-19 04:53:03,543 [INFO] Retrying request to /chat/completions in 0.946100 seconds
+2026-04-19 04:53:24,520 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:53:28,525 [WARNING]   Candidate 13: error (LLM failed after 3 retries)
+2026-04-19 04:53:48,558 [INFO] Retrying request to /chat/completions in 0.474548 seconds
+2026-04-19 04:54:09,059 [INFO] Retrying request to /chat/completions in 0.993372 seconds
+2026-04-19 04:54:30,082 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:54:51,113 [INFO] Retrying request to /chat/completions in 0.496323 seconds
+2026-04-19 04:55:11,635 [INFO] Retrying request to /chat/completions in 0.895985 seconds
+2026-04-19 04:55:32,561 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:55:54,593 [INFO] Retrying request to /chat/completions in 0.499021 seconds
+2026-04-19 04:56:15,123 [INFO] Retrying request to /chat/completions in 0.917351 seconds
+2026-04-19 04:56:36,068 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:56:40,072 [WARNING]   Candidate 14: error (LLM failed after 3 retries)
+2026-04-19 04:57:00,105 [INFO] Retrying request to /chat/completions in 0.385576 seconds
+2026-04-19 04:57:20,517 [INFO] Retrying request to /chat/completions in 0.791607 seconds
+2026-04-19 04:57:41,341 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 04:58:02,378 [INFO] Retrying request to /chat/completions in 0.425365 seconds
+2026-04-19 04:58:22,838 [INFO] Retrying request to /chat/completions in 0.975190 seconds
+2026-04-19 04:58:43,843 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 04:59:05,876 [INFO] Retrying request to /chat/completions in 0.472739 seconds
+2026-04-19 04:59:26,384 [INFO] Retrying request to /chat/completions in 0.998310 seconds
+2026-04-19 04:59:47,410 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 04:59:51,415 [WARNING]   Candidate 15: error (LLM failed after 3 retries)
+2026-04-19 05:00:11,447 [INFO] Retrying request to /chat/completions in 0.376077 seconds
+2026-04-19 05:00:31,856 [INFO] Retrying request to /chat/completions in 0.970712 seconds
+2026-04-19 05:00:52,857 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 05:01:13,895 [INFO] Retrying request to /chat/completions in 0.393481 seconds
+2026-04-19 05:01:34,315 [INFO] Retrying request to /chat/completions in 0.759875 seconds
+2026-04-19 05:01:55,106 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 05:02:17,138 [INFO] Retrying request to /chat/completions in 0.457159 seconds
+2026-04-19 05:02:37,630 [INFO] Retrying request to /chat/completions in 0.917343 seconds
+2026-04-19 05:02:58,576 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 05:03:02,581 [WARNING]   Candidate 16: error (LLM failed after 3 retries)
+2026-04-19 05:03:02,581 [ERROR] No valid candidates, skip iteration
+2026-04-19 05:03:02,581 [INFO] Valid candidates: 1/16
+2026-04-19 05:03:02,581 [INFO] Training 1 candidates (2 GPUs parallel)...
+2026-04-19 05:03:02,581 [INFO]   Batch 1/1: candidates 1-1
+2026-04-19 05:13:39,763 [INFO]   Batch 1 complete: 1 total results so far
+2026-04-19 05:13:39,764 [WARNING] All candidates failed, using previous best
+2026-04-19 05:13:39,766 [INFO] Iter 3 complete | best=-1 | pos_err=1.0000 | tes=NO | valid=0/1
+2026-04-19 05:13:39,766 [INFO]   Rank 1: candidate 0 pos_err=1.0000 tes=NO
+2026-04-19 05:13:39,766 [INFO] 
+============================================================
+2026-04-19 05:13:39,766 [INFO] LLM Iteration 4/5
+2026-04-19 05:13:39,766 [INFO] ============================================================
+2026-04-19 05:13:39,766 [INFO] No TES summary, using scalar feedback only
+2026-04-19 05:13:39,766 [INFO] Generating 16 candidates from QwenMax...
+2026-04-19 05:13:59,804 [INFO] Retrying request to /chat/completions in 0.461492 seconds
+2026-04-19 05:14:20,294 [INFO] Retrying request to /chat/completions in 0.925404 seconds
+2026-04-19 05:14:41,247 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 05:15:02,275 [INFO] Retrying request to /chat/completions in 0.428621 seconds
+2026-04-19 05:15:22,742 [INFO] Retrying request to /chat/completions in 0.890216 seconds
+2026-04-19 05:15:48,665 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 05:16:10,707 [INFO] Retrying request to /chat/completions in 0.425284 seconds
+2026-04-19 05:16:31,163 [INFO] Retrying request to /chat/completions in 0.769242 seconds
+2026-04-19 05:16:51,965 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 05:16:55,969 [WARNING]   Candidate 1: error (LLM failed after 3 retries)
+2026-04-19 05:17:22,254 [INFO] Retrying request to /chat/completions in 0.412928 seconds
+2026-04-19 05:17:42,696 [INFO] Retrying request to /chat/completions in 0.824180 seconds
+2026-04-19 05:18:03,555 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 05:18:24,585 [INFO] Retrying request to /chat/completions in 0.425479 seconds
+2026-04-19 05:18:45,046 [INFO] Retrying request to /chat/completions in 0.786539 seconds
+2026-04-19 05:19:05,862 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 05:19:27,893 [INFO] Retrying request to /chat/completions in 0.416455 seconds
+2026-04-19 05:19:48,334 [INFO] Retrying request to /chat/completions in 0.868064 seconds
+2026-04-19 05:20:09,226 [WARNING] LLM attempt 3 failed: Connection error.. Retry in 4s
+2026-04-19 05:20:13,230 [WARNING]   Candidate 2: error (LLM failed after 3 retries)
+2026-04-19 05:20:33,246 [INFO] Retrying request to /chat/completions in 0.445205 seconds
+2026-04-19 05:20:53,706 [INFO] Retrying request to /chat/completions in 0.975539 seconds
+2026-04-19 05:21:14,697 [WARNING] LLM attempt 1 failed: Connection error.. Retry in 1s
+2026-04-19 05:21:35,714 [INFO] Retrying request to /chat/completions in 0.431482 seconds
+2026-04-19 05:21:56,159 [INFO] Retrying request to /chat/completions in 0.973094 seconds
+2026-04-19 05:22:17,148 [WARNING] LLM attempt 2 failed: Connection error.. Retry in 2s
+2026-04-19 05:22:39,168 [INFO] Retrying request to /chat/completions in 0.480839 seconds

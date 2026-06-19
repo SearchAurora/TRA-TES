@@ -1,0 +1,8 @@
+{
+  "mean_reward": -315.5426025390625,
+  "mean_episode_length": 499.0,
+  "success_rate": 0.0,
+  "drawer_pos": 5.6532320741098374e-05,
+  "position_error": 0.9999434676792589,
+  "tes_summary": "=== Trajectory Event Summary (50 episodes, avg length 499 steps) ===\n\n[TIMESTEP ATTRIBUTION] No significant reward crashes detected.\n\n[SUGGESTED FOCUS]\n  - No critical issues detected. Consider fine-tuning weights for marginal improvement."
+}

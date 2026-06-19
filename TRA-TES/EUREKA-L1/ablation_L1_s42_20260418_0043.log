@@ -1,0 +1,14 @@
+2026-04-18 00:43:37,021 [INFO] === EUREKA-TRA (Evolutionary) iterations=5 candidates=16 envs=4096 rl_iters=1500 gpus=2 run=20260418_004337_s42 ===
+2026-04-18 00:43:37,085 [INFO] 
+============================================================
+2026-04-18 00:43:37,085 [INFO] LLM Iteration 1/5
+2026-04-18 00:43:37,085 [INFO] ============================================================
+2026-04-18 00:43:37,085 [INFO] Generating 16 candidates from QwenMax...
+2026-04-18 00:43:51,690 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:43:51,707 [INFO]   Candidate 1: OK (OK dict (total=-1.5100, 6 components))
+2026-04-18 00:44:07,434 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:44:07,437 [INFO]   Candidate 2: OK (OK dict (total=19.7500, 6 components))
+2026-04-18 00:44:26,126 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:44:26,131 [INFO]   Candidate 3: OK (OK dict (total=5.5222, 6 components))
+2026-04-18 00:44:40,802 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-18 00:44:40,807 [INFO]   Candidate 4: OK (OK dict (total=-0.8093, 6 components))

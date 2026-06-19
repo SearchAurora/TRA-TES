@@ -1,0 +1,8 @@
+{
+  "summary": "=== Trajectory Event Summary (50 episodes, avg length 499 steps) ===\n\n[TIMESTEP ATTRIBUTION] No significant reward crashes detected.\n\n[SUGGESTED FOCUS]\n  - No critical issues detected. Consider fine-tuning weights for marginal improvement.",
+  "n_episodes": 50,
+  "avg_episode_length": 499.0,
+  "crash_windows": [],
+  "component_attributions": [],
+  "phase_stats": []
+}

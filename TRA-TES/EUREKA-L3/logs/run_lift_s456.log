@@ -1,0 +1,67 @@
+2026-05-11 19:04:00,803 [INFO] === EUREKA-TRA (Evolutionary) iterations=5 candidates=16 envs=4096 rl_iters=1500 gpus=1 run=20260511_190400_s456 ===
+2026-05-11 19:04:00,850 [INFO] Resumed from iter 2, best PE=0.2590, run_id=20260509_122902_s456
+2026-05-11 19:04:00,850 [INFO] 
+============================================================
+2026-05-11 19:04:00,850 [INFO] LLM Iteration 3/5
+2026-05-11 19:04:00,850 [INFO] ============================================================
+2026-05-11 19:04:00,850 [INFO] TES summary injected (727 chars)
+2026-05-11 19:04:00,850 [INFO] Generating 16 candidates from QwenMax...
+2026-05-11 19:04:22,023 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:04:22,043 [WARNING]   Candidate 1: error (Invalid reward code: Invalid obs keys for task 'lift': {'timestep'}. Valid: ['action_rate', 'eef_obj_dist', 'gripper_open', 'joint_vel_norm', 'obj_goal_dist', 'obj_pos_x', 'obj_pos_y', 'obj_pos_z', 'target_pos_x', 'target_pos_y', 'target_pos_z'])
+2026-05-11 19:04:34,445 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:04:34,449 [INFO]   Candidate 2: OK (OK dict (total=-0.0442, 8 components))
+2026-05-11 19:04:51,680 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:04:51,685 [INFO]   Candidate 3: OK (OK dict (total=0.0008, 8 components))
+2026-05-11 19:05:11,864 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:05:11,869 [INFO]   Candidate 4: OK (OK dict (total=0.0008, 8 components))
+2026-05-11 19:05:28,975 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:05:28,979 [INFO]   Candidate 5: OK (OK dict (total=0.0008, 8 components))
+2026-05-11 19:05:44,178 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:05:44,183 [INFO]   Candidate 6: OK (OK dict (total=0.0033, 6 components))
+2026-05-11 19:06:02,671 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:06:02,674 [WARNING]   Candidate 7: error (Invalid reward code: Invalid obs keys for task 'lift': {'timestep'}. Valid: ['action_rate', 'eef_obj_dist', 'gripper_open', 'joint_vel_norm', 'obj_goal_dist', 'obj_pos_x', 'obj_pos_y', 'obj_pos_z', 'target_pos_x', 'target_pos_y', 'target_pos_z'])
+2026-05-11 19:06:19,612 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:06:19,617 [WARNING]   Candidate 8: test failed (Runtime error: object of type 'float' has no len())
+2026-05-11 19:06:33,635 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:06:33,640 [INFO]   Candidate 9: OK (OK dict (total=0.0058, 6 components))
+2026-05-11 19:06:53,843 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:06:53,847 [WARNING]   Candidate 10: test failed (Runtime error: object of type 'float' has no len())
+2026-05-11 19:07:16,492 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:07:16,497 [INFO]   Candidate 11: OK (OK dict (total=0.0008, 8 components))
+2026-05-11 19:07:41,775 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:07:41,780 [INFO]   Candidate 12: OK (OK dict (total=0.0048, 6 components))
+2026-05-11 19:08:00,161 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:08:00,165 [INFO]   Candidate 13: OK (OK dict (total=0.0033, 6 components))
+2026-05-11 19:08:25,496 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:08:25,501 [INFO]   Candidate 14: OK (OK dict (total=0.0058, 8 components))
+2026-05-11 19:08:44,378 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:08:44,382 [INFO]   Candidate 15: OK (OK dict (total=0.0058, 6 components))
+2026-05-11 19:09:15,544 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 19:09:15,551 [INFO]   Candidate 16: OK (OK dict (total=0.0058, 7 components))
+2026-05-11 19:09:15,551 [INFO] Valid candidates: 12/16
+2026-05-11 19:09:15,551 [INFO] Training 12 candidates (1 GPUs parallel)...
+2026-05-11 19:09:15,551 [INFO]   Batch 1/12: candidates 1-1
+2026-05-11 22:31:39,229 [INFO]   Batch 1 complete: 1 total results so far
+2026-05-11 22:32:09,260 [INFO]   Batch 2/12: candidates 2-2
+2026-05-12 01:56:38,609 [INFO]   Batch 2 complete: 2 total results so far
+2026-05-12 01:57:08,640 [INFO]   Batch 3/12: candidates 3-3
+2026-05-12 05:42:51,023 [INFO]   Batch 3 complete: 3 total results so far
+2026-05-12 05:43:21,052 [INFO]   Batch 4/12: candidates 4-4
+2026-05-12 09:45:21,070 [WARNING] Worker timeout: 
+2026-05-12 09:45:21,071 [WARNING]     No stats file for candidate 4
+2026-05-12 09:45:51,074 [INFO]   Batch 4 complete: 3 total results so far
+2026-05-12 09:46:21,105 [INFO]   Batch 5/12: candidates 5-5
+2026-05-12 13:48:21,209 [WARNING] Worker timeout: 
+2026-05-12 13:48:21,209 [WARNING]     No stats file for candidate 5
+2026-05-12 13:48:51,236 [INFO]   Batch 5 complete: 3 total results so far
+2026-05-12 13:49:21,250 [INFO]   Batch 6/12: candidates 6-6
+2026-05-12 17:51:21,357 [WARNING] Worker timeout: 
+2026-05-12 17:51:21,357 [WARNING]     No stats file for candidate 8
+2026-05-12 17:51:51,384 [INFO]   Batch 6 complete: 3 total results so far
+2026-05-12 17:52:21,413 [INFO]   Batch 7/12: candidates 7-7
+2026-05-12 21:54:21,519 [WARNING] Worker timeout: 
+2026-05-12 21:54:21,519 [WARNING]     No stats file for candidate 10
+2026-05-12 21:54:51,548 [INFO]   Batch 7 complete: 3 total results so far
+2026-05-12 21:55:21,576 [INFO]   Batch 8/12: candidates 8-8
+2026-05-12 22:05:59,593 [INFO]   Batch 8 complete: 4 total results so far
+2026-05-12 22:06:29,619 [INFO]   Batch 9/12: candidates 9-9

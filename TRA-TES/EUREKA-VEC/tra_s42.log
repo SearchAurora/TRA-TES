@@ -1,0 +1,42 @@
+nohup: ignoring input
+2026-04-15 22:31:30,413 [INFO] === EUREKA-TRA (Evolutionary) iterations=5 candidates=16 envs=4096 rl_iters=1500 gpus=2 run=20260415_223130_s42 ===
+2026-04-15 22:31:30,500 [INFO] 
+============================================================
+2026-04-15 22:31:30,500 [INFO] LLM Iteration 1/5
+2026-04-15 22:31:30,500 [INFO] ============================================================
+2026-04-15 22:31:30,500 [INFO] Generating 16 candidates from QwenMax...
+2026-04-15 22:31:44,623 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:31:44,636 [INFO]   Candidate 1: OK (OK dict (total=-1.8600, 5 components))
+2026-04-15 22:32:00,733 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:32:00,735 [INFO]   Candidate 2: OK (OK dict (total=-2.2100, 5 components))
+2026-04-15 22:32:14,337 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:32:14,341 [INFO]   Candidate 3: OK (OK dict (total=6.7037, 5 components))
+2026-04-15 22:32:30,111 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:32:30,114 [INFO]   Candidate 4: OK (OK dict (total=-1.4000, 5 components))
+2026-04-15 22:32:41,587 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:32:41,589 [INFO]   Candidate 5: OK (OK dict (total=-2.3000, 5 components))
+2026-04-15 22:32:55,848 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:32:55,850 [INFO]   Candidate 6: OK (OK dict (total=-1.7000, 5 components))
+2026-04-15 22:33:07,506 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:33:07,509 [INFO]   Candidate 7: OK (OK dict (total=-1.8600, 5 components))
+2026-04-15 22:33:23,139 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:33:23,142 [INFO]   Candidate 8: OK (OK dict (total=4.5000, 5 components))
+2026-04-15 22:33:42,165 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:33:42,168 [INFO]   Candidate 9: OK (OK dict (total=5.5222, 5 components))
+2026-04-15 22:33:54,301 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:33:54,304 [INFO]   Candidate 10: OK (OK dict (total=-8.2500, 5 components))
+2026-04-15 22:34:05,455 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:34:05,458 [INFO]   Candidate 11: OK (OK dict (total=-2.9000, 5 components))
+2026-04-15 22:34:20,198 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:34:20,202 [INFO]   Candidate 12: OK (OK dict (total=-1.8600, 5 components))
+2026-04-15 22:34:30,534 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:34:30,538 [INFO]   Candidate 13: OK (OK dict (total=-3.7500, 5 components))
+2026-04-15 22:34:44,276 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:34:44,279 [INFO]   Candidate 14: OK (OK dict (total=-2.2100, 5 components))
+2026-04-15 22:34:58,181 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:34:58,185 [INFO]   Candidate 15: OK (OK dict (total=-1.8600, 5 components))
+2026-04-15 22:35:12,563 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-15 22:35:12,567 [INFO]   Candidate 16: OK (OK dict (total=-2.2100, 5 components))
+2026-04-15 22:35:12,567 [INFO] Valid candidates: 16/16
+2026-04-15 22:35:12,567 [INFO] Training 16 candidates (2 GPUs parallel)...
+2026-04-15 22:35:12,567 [INFO]   Batch 1/8: candidates 1-2

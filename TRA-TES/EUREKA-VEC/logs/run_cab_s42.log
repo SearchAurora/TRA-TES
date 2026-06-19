@@ -1,0 +1,460 @@
+2026-04-30 21:16:57,631 [INFO] === EUREKA-TRA (Evolutionary) iterations=5 candidates=16 envs=4096 rl_iters=1500 gpus=1 run=20260430_211657_s42 ===
+2026-04-30 21:16:57,710 [INFO] 
+============================================================
+2026-04-30 21:16:57,710 [INFO] LLM Iteration 1/5
+2026-04-30 21:16:57,710 [INFO] ============================================================
+2026-04-30 21:16:57,710 [INFO] Generating 16 candidates from QwenMax...
+2026-04-30 21:17:08,167 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:17:08,179 [INFO]   Candidate 1: OK (OK dict (total=4.5500, 6 components))
+2026-04-30 21:17:18,844 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:17:18,847 [INFO]   Candidate 2: OK (OK dict (total=7.5679, 4 components))
+2026-04-30 21:17:37,781 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:17:37,784 [INFO]   Candidate 3: OK (OK dict (total=7.8900, 6 components))
+2026-04-30 21:17:50,015 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:17:50,018 [INFO]   Candidate 4: OK (OK dict (total=14.7800, 6 components))
+2026-04-30 21:18:14,410 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:18:14,412 [INFO]   Candidate 5: OK (OK dict (total=10.9780, 6 components))
+2026-04-30 21:18:25,174 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:18:25,177 [INFO]   Candidate 6: OK (OK dict (total=1.8706, 4 components))
+2026-04-30 21:18:48,230 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:18:48,233 [INFO]   Candidate 7: OK (OK dict (total=4.9340, 6 components))
+2026-04-30 21:19:01,257 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:19:01,260 [INFO]   Candidate 8: OK (OK dict (total=4.3800, 4 components))
+2026-04-30 21:19:17,288 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:19:17,291 [INFO]   Candidate 9: OK (OK dict (total=1.9780, 6 components))
+2026-04-30 21:19:39,856 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:19:39,860 [INFO]   Candidate 10: OK (OK dict (total=7.8900, 6 components))
+2026-04-30 21:19:58,160 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:19:58,163 [INFO]   Candidate 11: OK (OK dict (total=7.8900, 6 components))
+2026-04-30 21:20:14,516 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:20:14,519 [INFO]   Candidate 12: OK (OK dict (total=1.9780, 6 components))
+2026-04-30 21:20:36,963 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:20:36,966 [INFO]   Candidate 13: OK (OK dict (total=14.7800, 6 components))
+2026-04-30 21:20:56,579 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:20:56,583 [INFO]   Candidate 14: OK (OK dict (total=10.9780, 6 components))
+2026-04-30 21:21:05,909 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:21:05,912 [INFO]   Candidate 15: OK (OK dict (total=1.8706, 4 components))
+2026-04-30 21:21:25,248 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-30 21:21:25,251 [INFO]   Candidate 16: OK (OK dict (total=7.8900, 6 components))
+2026-04-30 21:21:25,251 [INFO] Valid candidates: 16/16
+2026-04-30 21:21:25,252 [INFO] Training 16 candidates (1 GPUs parallel)...
+2026-04-30 21:21:25,252 [INFO]   Batch 1/16: candidates 1-1
+2026-04-30 21:46:41,283 [INFO]   Batch 1 complete: 1 total results so far
+2026-04-30 21:47:11,314 [INFO]   Batch 2/16: candidates 2-2
+2026-04-30 23:46:56,413 [INFO]   Batch 2 complete: 2 total results so far
+2026-04-30 23:47:26,443 [INFO]   Batch 3/16: candidates 3-3
+2026-05-01 00:13:41,500 [INFO]   Batch 3 complete: 3 total results so far
+2026-05-01 00:14:11,531 [INFO]   Batch 4/16: candidates 4-4
+2026-05-01 00:40:04,201 [INFO]   Batch 4 complete: 4 total results so far
+2026-05-01 00:40:34,231 [INFO]   Batch 5/16: candidates 5-5
+2026-05-01 01:04:29,730 [INFO]   Batch 5 complete: 5 total results so far
+2026-05-01 01:04:59,759 [INFO]   Batch 6/16: candidates 6-6
+2026-05-01 02:29:58,604 [INFO]   Batch 6 complete: 6 total results so far
+2026-05-01 02:30:28,632 [INFO]   Batch 7/16: candidates 7-7
+2026-05-01 02:52:49,900 [INFO]   Batch 7 complete: 7 total results so far
+2026-05-01 02:53:19,930 [INFO]   Batch 8/16: candidates 8-8
+2026-05-01 03:17:53,413 [INFO]   Batch 8 complete: 8 total results so far
+2026-05-01 03:18:23,442 [INFO]   Batch 9/16: candidates 9-9
+2026-05-01 03:49:05,032 [INFO]   Batch 9 complete: 9 total results so far
+2026-05-01 03:49:35,058 [INFO]   Batch 10/16: candidates 10-10
+2026-05-01 04:22:23,655 [INFO]   Batch 10 complete: 10 total results so far
+2026-05-01 04:22:53,686 [INFO]   Batch 11/16: candidates 11-11
+2026-05-01 04:52:37,240 [INFO]   Batch 11 complete: 11 total results so far
+2026-05-01 04:53:07,270 [INFO]   Batch 12/16: candidates 12-12
+2026-05-01 05:29:17,420 [INFO]   Batch 12 complete: 12 total results so far
+2026-05-01 05:29:47,487 [INFO]   Batch 13/16: candidates 13-13
+2026-05-01 06:34:08,193 [INFO]   Batch 13 complete: 13 total results so far
+2026-05-01 06:34:38,222 [INFO]   Batch 14/16: candidates 14-14
+2026-05-01 07:34:48,159 [INFO]   Batch 14 complete: 14 total results so far
+2026-05-01 07:35:18,190 [INFO]   Batch 15/16: candidates 15-15
+2026-05-01 10:22:40,233 [INFO]   Batch 15 complete: 15 total results so far
+2026-05-01 10:23:10,262 [INFO]   Batch 16/16: candidates 16-16
+2026-05-01 10:52:00,091 [INFO]   Batch 16 complete: 16 total results so far
+2026-05-01 10:52:00,092 [INFO] New global best! pos_err=0.6252
+2026-05-01 10:52:00,094 [INFO] Best candidate: 7, pos_err=0.6252, tes=NO
+2026-05-01 10:52:00,095 [INFO] Iter 1 complete | best=7 | pos_err=0.6252 | tes=NO | valid=1/16
+2026-05-01 10:52:00,095 [INFO]   Rank 1: candidate 7 pos_err=0.6252 tes=NO ★
+2026-05-01 10:52:00,095 [INFO]   Rank 2: candidate 2 pos_err=0.9513 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 3: candidate 10 pos_err=0.9718 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 4: candidate 12 pos_err=0.9809 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 5: candidate 5 pos_err=0.9859 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 6: candidate 3 pos_err=0.9907 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 7: candidate 9 pos_err=0.9914 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 8: candidate 13 pos_err=0.9951 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 9: candidate 1 pos_err=0.9955 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 10: candidate 14 pos_err=0.9960 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 11: candidate 15 pos_err=0.9964 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 12: candidate 8 pos_err=0.9984 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 13: candidate 0 pos_err=0.9989 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 14: candidate 4 pos_err=1.0000 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 15: candidate 11 pos_err=1.0000 tes=NO
+2026-05-01 10:52:00,095 [INFO]   Rank 16: candidate 6 pos_err=1.0000 tes=NO
+2026-05-01 10:52:00,095 [INFO] 
+============================================================
+2026-05-01 10:52:00,095 [INFO] LLM Iteration 2/5
+2026-05-01 10:52:00,095 [INFO] ============================================================
+2026-05-01 10:52:00,095 [INFO] No TES summary, using scalar feedback only
+2026-05-01 10:52:00,095 [INFO] Generating 16 candidates from QwenMax...
+2026-05-01 10:52:15,549 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:52:15,551 [INFO]   Candidate 1: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:52:32,515 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:52:32,518 [INFO]   Candidate 2: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:52:48,540 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:52:48,543 [INFO]   Candidate 3: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:53:00,521 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:53:00,524 [INFO]   Candidate 4: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:53:14,053 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:53:14,057 [INFO]   Candidate 5: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:53:34,538 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:53:34,541 [INFO]   Candidate 6: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:53:49,199 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:53:49,201 [INFO]   Candidate 7: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:54:06,659 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:54:06,662 [INFO]   Candidate 8: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:54:22,052 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:54:22,055 [INFO]   Candidate 9: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:54:43,490 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:54:43,493 [INFO]   Candidate 10: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:54:55,234 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:54:55,237 [INFO]   Candidate 11: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:55:11,777 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:55:11,780 [INFO]   Candidate 12: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:55:33,031 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:55:33,034 [INFO]   Candidate 13: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:55:47,219 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:55:47,221 [INFO]   Candidate 14: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:56:09,009 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:56:09,011 [INFO]   Candidate 15: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:56:27,053 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 10:56:27,056 [INFO]   Candidate 16: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 10:56:27,056 [INFO] Valid candidates: 16/16
+2026-05-01 10:56:27,056 [INFO] Training 16 candidates (1 GPUs parallel)...
+2026-05-01 10:56:27,056 [INFO]   Batch 1/16: candidates 1-1
+2026-05-01 11:22:36,896 [INFO]   Batch 1 complete: 1 total results so far
+2026-05-01 11:23:06,923 [INFO]   Batch 2/16: candidates 2-2
+2026-05-01 11:49:42,700 [INFO]   Batch 2 complete: 2 total results so far
+2026-05-01 11:50:12,730 [INFO]   Batch 3/16: candidates 3-3
+2026-05-01 12:16:23,272 [INFO]   Batch 3 complete: 3 total results so far
+2026-05-01 12:16:53,302 [INFO]   Batch 4/16: candidates 4-4
+2026-05-01 12:41:38,762 [INFO]   Batch 4 complete: 4 total results so far
+2026-05-01 12:42:08,793 [INFO]   Batch 5/16: candidates 5-5
+2026-05-01 13:07:16,677 [INFO]   Batch 5 complete: 5 total results so far
+2026-05-01 13:07:46,708 [INFO]   Batch 6/16: candidates 6-6
+2026-05-01 13:33:04,321 [INFO]   Batch 6 complete: 6 total results so far
+2026-05-01 13:33:34,351 [INFO]   Batch 7/16: candidates 7-7
+2026-05-01 13:59:32,633 [INFO]   Batch 7 complete: 7 total results so far
+2026-05-01 14:00:02,663 [INFO]   Batch 8/16: candidates 8-8
+2026-05-01 14:26:21,016 [INFO]   Batch 8 complete: 8 total results so far
+2026-05-01 14:26:51,035 [INFO]   Batch 9/16: candidates 9-9
+2026-05-01 14:53:21,794 [INFO]   Batch 9 complete: 9 total results so far
+2026-05-01 14:53:51,824 [INFO]   Batch 10/16: candidates 10-10
+2026-05-01 15:19:39,429 [INFO]   Batch 10 complete: 10 total results so far
+2026-05-01 15:20:09,431 [INFO]   Batch 11/16: candidates 11-11
+2026-05-01 15:45:17,230 [INFO]   Batch 11 complete: 11 total results so far
+2026-05-01 15:45:47,258 [INFO]   Batch 12/16: candidates 12-12
+2026-05-01 16:12:41,124 [INFO]   Batch 12 complete: 12 total results so far
+2026-05-01 16:13:11,155 [INFO]   Batch 13/16: candidates 13-13
+2026-05-01 16:38:13,651 [INFO]   Batch 13 complete: 13 total results so far
+2026-05-01 16:38:43,679 [INFO]   Batch 14/16: candidates 14-14
+2026-05-01 17:03:20,648 [INFO]   Batch 14 complete: 14 total results so far
+2026-05-01 17:03:50,678 [INFO]   Batch 15/16: candidates 15-15
+2026-05-01 17:29:45,563 [INFO]   Batch 15 complete: 15 total results so far
+2026-05-01 17:30:15,594 [INFO]   Batch 16/16: candidates 16-16
+2026-05-01 17:56:47,067 [INFO]   Batch 16 complete: 16 total results so far
+2026-05-01 17:56:47,068 [WARNING] All candidates failed, using previous best
+2026-05-01 17:56:47,069 [INFO] Iter 2 complete | best=-1 | pos_err=1.0000 | tes=NO | valid=0/16
+2026-05-01 17:56:47,069 [INFO]   Rank 1: candidate 1 pos_err=0.9749 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 2: candidate 14 pos_err=0.9824 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 3: candidate 3 pos_err=0.9903 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 4: candidate 8 pos_err=0.9907 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 5: candidate 13 pos_err=0.9927 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 6: candidate 11 pos_err=0.9930 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 7: candidate 4 pos_err=0.9947 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 8: candidate 15 pos_err=0.9957 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 9: candidate 7 pos_err=0.9979 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 10: candidate 5 pos_err=0.9980 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 11: candidate 6 pos_err=0.9983 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 12: candidate 9 pos_err=0.9985 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 13: candidate 12 pos_err=0.9989 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 14: candidate 10 pos_err=0.9992 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 15: candidate 2 pos_err=0.9998 tes=NO
+2026-05-01 17:56:47,069 [INFO]   Rank 16: candidate 0 pos_err=0.9998 tes=NO
+2026-05-01 17:56:47,069 [INFO] 
+============================================================
+2026-05-01 17:56:47,069 [INFO] LLM Iteration 3/5
+2026-05-01 17:56:47,069 [INFO] ============================================================
+2026-05-01 17:56:47,069 [INFO] No TES summary, using scalar feedback only
+2026-05-01 17:56:47,069 [INFO] Generating 16 candidates from QwenMax...
+2026-05-01 17:57:07,202 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 17:57:07,204 [INFO]   Candidate 1: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 17:57:23,981 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 17:57:23,984 [INFO]   Candidate 2: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 17:57:42,516 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 17:57:42,518 [INFO]   Candidate 3: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 17:57:58,429 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 17:57:58,432 [INFO]   Candidate 4: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 17:58:17,466 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 17:58:17,469 [INFO]   Candidate 5: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 17:58:32,528 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 17:58:32,532 [INFO]   Candidate 6: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 17:58:50,152 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 17:58:50,155 [INFO]   Candidate 7: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 17:59:05,772 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 17:59:05,774 [INFO]   Candidate 8: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 17:59:24,918 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 17:59:24,920 [INFO]   Candidate 9: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 17:59:44,110 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 17:59:44,113 [INFO]   Candidate 10: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 17:59:59,761 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 17:59:59,763 [INFO]   Candidate 11: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 18:00:17,938 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 18:00:17,941 [INFO]   Candidate 12: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 18:00:40,161 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 18:00:40,164 [INFO]   Candidate 13: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 18:00:59,849 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 18:00:59,853 [INFO]   Candidate 14: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 18:01:20,530 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 18:01:20,533 [INFO]   Candidate 15: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 18:01:42,106 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-01 18:01:42,109 [INFO]   Candidate 16: OK (OK dict (total=4.3800, 5 components))
+2026-05-01 18:01:42,109 [INFO] Valid candidates: 16/16
+2026-05-01 18:01:42,109 [INFO] Training 16 candidates (1 GPUs parallel)...
+2026-05-01 18:01:42,109 [INFO]   Batch 1/16: candidates 1-1
+2026-05-01 18:26:35,691 [INFO]   Batch 1 complete: 1 total results so far
+2026-05-01 18:27:05,722 [INFO]   Batch 2/16: candidates 2-2
+2026-05-01 18:52:46,877 [INFO]   Batch 2 complete: 2 total results so far
+2026-05-01 18:53:16,907 [INFO]   Batch 3/16: candidates 3-3
+2026-05-01 19:20:21,464 [INFO]   Batch 3 complete: 3 total results so far
+2026-05-01 19:20:51,495 [INFO]   Batch 4/16: candidates 4-4
+2026-05-01 19:53:17,675 [INFO]   Batch 4 complete: 4 total results so far
+2026-05-01 19:53:47,702 [INFO]   Batch 5/16: candidates 5-5
+2026-05-01 20:21:07,521 [INFO]   Batch 5 complete: 5 total results so far
+2026-05-01 20:21:37,550 [INFO]   Batch 6/16: candidates 6-6
+2026-05-01 20:49:40,992 [INFO]   Batch 6 complete: 6 total results so far
+2026-05-01 20:50:11,022 [INFO]   Batch 7/16: candidates 7-7
+2026-05-01 21:16:52,479 [INFO]   Batch 7 complete: 7 total results so far
+2026-05-01 21:17:22,506 [INFO]   Batch 8/16: candidates 8-8
+2026-05-01 21:45:16,511 [INFO]   Batch 8 complete: 8 total results so far
+2026-05-01 21:45:46,539 [INFO]   Batch 9/16: candidates 9-9
+2026-05-01 22:12:17,828 [INFO]   Batch 9 complete: 9 total results so far
+2026-05-01 22:12:47,854 [INFO]   Batch 10/16: candidates 10-10
+2026-05-01 22:45:52,300 [INFO]   Batch 10 complete: 10 total results so far
+2026-05-01 22:46:22,326 [INFO]   Batch 11/16: candidates 11-11
+2026-05-01 23:13:03,663 [INFO]   Batch 11 complete: 11 total results so far
+2026-05-01 23:13:33,693 [INFO]   Batch 12/16: candidates 12-12
+2026-05-01 23:38:44,397 [INFO]   Batch 12 complete: 12 total results so far
+2026-05-01 23:39:14,405 [INFO]   Batch 13/16: candidates 13-13
+2026-05-02 00:04:25,288 [INFO]   Batch 13 complete: 13 total results so far
+2026-05-02 00:04:55,318 [INFO]   Batch 14/16: candidates 14-14
+2026-05-02 00:33:47,736 [INFO]   Batch 14 complete: 14 total results so far
+2026-05-02 00:34:17,762 [INFO]   Batch 15/16: candidates 15-15
+2026-05-02 01:07:20,191 [INFO]   Batch 15 complete: 15 total results so far
+2026-05-02 01:07:50,218 [INFO]   Batch 16/16: candidates 16-16
+2026-05-02 01:35:27,449 [INFO]   Batch 16 complete: 16 total results so far
+2026-05-02 01:35:27,451 [INFO] Best candidate: 4, pos_err=0.7080, tes=NO
+2026-05-02 01:35:27,452 [INFO] Iter 3 complete | best=4 | pos_err=0.7080 | tes=NO | valid=2/16
+2026-05-02 01:35:27,452 [INFO]   Rank 1: candidate 4 pos_err=0.7080 tes=NO ★
+2026-05-02 01:35:27,452 [INFO]   Rank 2: candidate 2 pos_err=0.7304 tes=NO
+2026-05-02 01:35:27,452 [INFO]   Rank 3: candidate 12 pos_err=0.9784 tes=NO
+2026-05-02 01:35:27,452 [INFO]   Rank 4: candidate 1 pos_err=0.9912 tes=NO
+2026-05-02 01:35:27,452 [INFO]   Rank 5: candidate 15 pos_err=0.9929 tes=NO
+2026-05-02 01:35:27,452 [INFO]   Rank 6: candidate 7 pos_err=0.9948 tes=NO
+2026-05-02 01:35:27,452 [INFO]   Rank 7: candidate 5 pos_err=0.9949 tes=NO
+2026-05-02 01:35:27,452 [INFO]   Rank 8: candidate 10 pos_err=0.9950 tes=NO
+2026-05-02 01:35:27,452 [INFO]   Rank 9: candidate 0 pos_err=0.9961 tes=NO
+2026-05-02 01:35:27,452 [INFO]   Rank 10: candidate 3 pos_err=0.9971 tes=NO
+2026-05-02 01:35:27,452 [INFO]   Rank 11: candidate 9 pos_err=0.9976 tes=NO
+2026-05-02 01:35:27,452 [INFO]   Rank 12: candidate 14 pos_err=0.9977 tes=NO
+2026-05-02 01:35:27,452 [INFO]   Rank 13: candidate 8 pos_err=0.9980 tes=NO
+2026-05-02 01:35:27,452 [INFO]   Rank 14: candidate 6 pos_err=0.9989 tes=NO
+2026-05-02 01:35:27,453 [INFO]   Rank 15: candidate 11 pos_err=0.9990 tes=NO
+2026-05-02 01:35:27,453 [INFO]   Rank 16: candidate 13 pos_err=0.9998 tes=NO
+2026-05-02 01:35:27,453 [INFO] 
+============================================================
+2026-05-02 01:35:27,453 [INFO] LLM Iteration 4/5
+2026-05-02 01:35:27,453 [INFO] ============================================================
+2026-05-02 01:35:27,453 [INFO] No TES summary, using scalar feedback only
+2026-05-02 01:35:27,453 [INFO] Generating 16 candidates from QwenMax...
+2026-05-02 01:35:37,656 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:35:37,658 [INFO]   Candidate 1: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:35:47,144 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:35:47,147 [INFO]   Candidate 2: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:35:56,872 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:35:56,876 [INFO]   Candidate 3: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:36:15,581 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:36:15,584 [INFO]   Candidate 4: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:36:24,840 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:36:24,843 [INFO]   Candidate 5: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:36:36,398 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:36:36,401 [INFO]   Candidate 6: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:36:46,133 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:36:46,136 [INFO]   Candidate 7: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:36:55,471 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:36:55,474 [INFO]   Candidate 8: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:37:05,877 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:37:05,880 [INFO]   Candidate 9: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:37:17,773 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:37:17,776 [INFO]   Candidate 10: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:37:28,797 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:37:28,800 [INFO]   Candidate 11: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:37:39,934 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:37:39,937 [INFO]   Candidate 12: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:37:49,150 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:37:49,154 [INFO]   Candidate 13: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:37:58,527 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:37:58,530 [INFO]   Candidate 14: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:38:08,939 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:38:08,942 [INFO]   Candidate 15: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:38:18,207 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 01:38:18,210 [INFO]   Candidate 16: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 01:38:18,210 [INFO] Valid candidates: 16/16
+2026-05-02 01:38:18,210 [INFO] Training 16 candidates (1 GPUs parallel)...
+2026-05-02 01:38:18,210 [INFO]   Batch 1/16: candidates 1-1
+2026-05-02 02:02:58,009 [INFO]   Batch 1 complete: 1 total results so far
+2026-05-02 02:03:28,040 [INFO]   Batch 2/16: candidates 2-2
+2026-05-02 02:28:44,265 [INFO]   Batch 2 complete: 2 total results so far
+2026-05-02 02:29:14,295 [INFO]   Batch 3/16: candidates 3-3
+2026-05-02 02:55:27,207 [INFO]   Batch 3 complete: 3 total results so far
+2026-05-02 02:55:57,237 [INFO]   Batch 4/16: candidates 4-4
+2026-05-02 03:22:02,577 [INFO]   Batch 4 complete: 4 total results so far
+2026-05-02 03:22:32,584 [INFO]   Batch 5/16: candidates 5-5
+2026-05-02 03:48:09,187 [INFO]   Batch 5 complete: 5 total results so far
+2026-05-02 03:48:39,216 [INFO]   Batch 6/16: candidates 6-6
+2026-05-02 04:14:19,479 [INFO]   Batch 6 complete: 6 total results so far
+2026-05-02 04:14:49,510 [INFO]   Batch 7/16: candidates 7-7
+2026-05-02 04:39:54,056 [INFO]   Batch 7 complete: 7 total results so far
+2026-05-02 04:40:24,086 [INFO]   Batch 8/16: candidates 8-8
+2026-05-02 05:05:12,304 [INFO]   Batch 8 complete: 8 total results so far
+2026-05-02 05:05:42,335 [INFO]   Batch 9/16: candidates 9-9
+2026-05-02 05:32:13,463 [INFO]   Batch 9 complete: 9 total results so far
+2026-05-02 05:32:43,494 [INFO]   Batch 10/16: candidates 10-10
+2026-05-02 05:57:48,736 [INFO]   Batch 10 complete: 10 total results so far
+2026-05-02 05:58:18,767 [INFO]   Batch 11/16: candidates 11-11
+2026-05-02 06:23:32,271 [INFO]   Batch 11 complete: 11 total results so far
+2026-05-02 06:24:02,302 [INFO]   Batch 12/16: candidates 12-12
+2026-05-02 06:48:40,982 [INFO]   Batch 12 complete: 12 total results so far
+2026-05-02 06:49:11,013 [INFO]   Batch 13/16: candidates 13-13
+2026-05-02 07:14:33,511 [INFO]   Batch 13 complete: 13 total results so far
+2026-05-02 07:15:03,541 [INFO]   Batch 14/16: candidates 14-14
+2026-05-02 07:39:38,916 [INFO]   Batch 14 complete: 14 total results so far
+2026-05-02 07:40:08,947 [INFO]   Batch 15/16: candidates 15-15
+2026-05-02 08:06:07,867 [INFO]   Batch 15 complete: 15 total results so far
+2026-05-02 08:06:37,897 [INFO]   Batch 16/16: candidates 16-16
+2026-05-02 08:31:07,316 [INFO]   Batch 16 complete: 16 total results so far
+2026-05-02 08:31:07,318 [INFO] Best candidate: 10, pos_err=0.9174, tes=NO
+2026-05-02 08:31:07,319 [INFO] Iter 4 complete | best=10 | pos_err=0.9174 | tes=NO | valid=4/16
+2026-05-02 08:31:07,319 [INFO]   Rank 1: candidate 10 pos_err=0.9174 tes=NO ★
+2026-05-02 08:31:07,320 [INFO]   Rank 2: candidate 3 pos_err=0.9246 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 3: candidate 6 pos_err=0.9386 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 4: candidate 15 pos_err=0.9464 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 5: candidate 5 pos_err=0.9687 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 6: candidate 2 pos_err=0.9737 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 7: candidate 8 pos_err=0.9906 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 8: candidate 4 pos_err=0.9958 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 9: candidate 9 pos_err=0.9959 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 10: candidate 1 pos_err=0.9974 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 11: candidate 14 pos_err=0.9991 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 12: candidate 7 pos_err=0.9994 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 13: candidate 12 pos_err=0.9995 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 14: candidate 11 pos_err=0.9997 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 15: candidate 0 pos_err=0.9998 tes=NO
+2026-05-02 08:31:07,320 [INFO]   Rank 16: candidate 13 pos_err=0.9999 tes=NO
+2026-05-02 08:31:07,320 [INFO] 
+============================================================
+2026-05-02 08:31:07,320 [INFO] LLM Iteration 5/5
+2026-05-02 08:31:07,320 [INFO] ============================================================
+2026-05-02 08:31:07,320 [INFO] No TES summary, using scalar feedback only
+2026-05-02 08:31:07,320 [INFO] Generating 16 candidates from QwenMax...
+2026-05-02 08:31:20,683 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:31:20,686 [INFO]   Candidate 1: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:31:33,372 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:31:33,375 [INFO]   Candidate 2: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:31:52,890 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:31:52,893 [INFO]   Candidate 3: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:32:07,464 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:32:07,468 [INFO]   Candidate 4: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:32:19,846 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:32:19,849 [INFO]   Candidate 5: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:32:33,112 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:32:33,115 [INFO]   Candidate 6: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:32:45,582 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:32:45,584 [INFO]   Candidate 7: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:33:05,059 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:33:05,061 [INFO]   Candidate 8: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:33:17,652 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:33:17,654 [INFO]   Candidate 9: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:33:31,241 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:33:31,245 [INFO]   Candidate 10: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:33:44,430 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:33:44,434 [INFO]   Candidate 11: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:34:00,293 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:34:00,295 [INFO]   Candidate 12: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:34:15,573 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:34:15,577 [INFO]   Candidate 13: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:34:27,146 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:34:27,152 [INFO]   Candidate 14: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:34:49,494 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:34:49,497 [INFO]   Candidate 15: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:35:03,085 [INFO] HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-02 08:35:03,088 [INFO]   Candidate 16: OK (OK dict (total=4.3800, 5 components))
+2026-05-02 08:35:03,088 [INFO] Valid candidates: 16/16
+2026-05-02 08:35:03,088 [INFO] Training 16 candidates (1 GPUs parallel)...
+2026-05-02 08:35:03,088 [INFO]   Batch 1/16: candidates 1-1
+2026-05-02 08:59:19,830 [INFO]   Batch 1 complete: 1 total results so far
+2026-05-02 08:59:49,859 [INFO]   Batch 2/16: candidates 2-2
+2026-05-02 09:25:16,229 [INFO]   Batch 2 complete: 2 total results so far
+2026-05-02 09:25:46,260 [INFO]   Batch 3/16: candidates 3-3
+2026-05-02 09:52:31,805 [INFO]   Batch 3 complete: 3 total results so far
+2026-05-02 09:53:01,815 [INFO]   Batch 4/16: candidates 4-4
+2026-05-02 10:18:46,188 [INFO]   Batch 4 complete: 4 total results so far
+2026-05-02 10:19:16,214 [INFO]   Batch 5/16: candidates 5-5
+2026-05-02 10:44:38,175 [INFO]   Batch 5 complete: 5 total results so far
+2026-05-02 10:45:08,205 [INFO]   Batch 6/16: candidates 6-6
+2026-05-02 11:10:22,223 [INFO]   Batch 6 complete: 6 total results so far
+2026-05-02 11:10:52,251 [INFO]   Batch 7/16: candidates 7-7
+2026-05-02 11:37:15,223 [INFO]   Batch 7 complete: 7 total results so far
+2026-05-02 11:37:45,254 [INFO]   Batch 8/16: candidates 8-8
+2026-05-02 12:04:06,232 [INFO]   Batch 8 complete: 8 total results so far
+2026-05-02 12:04:36,262 [INFO]   Batch 9/16: candidates 9-9
+2026-05-02 12:31:23,827 [INFO]   Batch 9 complete: 9 total results so far
+2026-05-02 12:31:53,857 [INFO]   Batch 10/16: candidates 10-10
+2026-05-02 12:56:28,655 [INFO]   Batch 10 complete: 10 total results so far
+2026-05-02 12:56:58,686 [INFO]   Batch 11/16: candidates 11-11
+2026-05-02 13:22:57,223 [INFO]   Batch 11 complete: 11 total results so far
+2026-05-02 13:23:27,254 [INFO]   Batch 12/16: candidates 12-12
+2026-05-02 13:48:32,132 [INFO]   Batch 12 complete: 12 total results so far
+2026-05-02 13:49:02,163 [INFO]   Batch 13/16: candidates 13-13
+2026-05-02 14:15:24,032 [INFO]   Batch 13 complete: 13 total results so far
+2026-05-02 14:15:54,062 [INFO]   Batch 14/16: candidates 14-14
+2026-05-02 14:40:55,064 [INFO]   Batch 14 complete: 14 total results so far
+2026-05-02 14:41:25,095 [INFO]   Batch 15/16: candidates 15-15
+2026-05-02 15:06:59,356 [INFO]   Batch 15 complete: 15 total results so far
+2026-05-02 15:07:29,383 [INFO]   Batch 16/16: candidates 16-16
+2026-05-02 15:34:52,571 [INFO]   Batch 16 complete: 16 total results so far
+2026-05-02 15:34:52,572 [INFO] New global best! pos_err=0.0000
+2026-05-02 15:34:52,575 [INFO] Best candidate: 13, pos_err=0.0000, tes=NO
+2026-05-02 15:34:52,577 [INFO] Iter 5 complete | best=13 | pos_err=0.0000 | tes=NO | valid=4/16
+2026-05-02 15:34:52,577 [INFO]   Rank 1: candidate 13 pos_err=0.0000 tes=NO ★
+2026-05-02 15:34:52,577 [INFO]   Rank 2: candidate 14 pos_err=0.4328 tes=NO
+2026-05-02 15:34:52,577 [INFO]   Rank 3: candidate 12 pos_err=0.8112 tes=NO
+2026-05-02 15:34:52,578 [INFO]   Rank 4: candidate 10 pos_err=0.9323 tes=NO
+2026-05-02 15:34:52,578 [INFO]   Rank 5: candidate 8 pos_err=0.9537 tes=NO
+2026-05-02 15:34:52,578 [INFO]   Rank 6: candidate 4 pos_err=0.9712 tes=NO
+2026-05-02 15:34:52,578 [INFO]   Rank 7: candidate 2 pos_err=0.9713 tes=NO
+2026-05-02 15:34:52,578 [INFO]   Rank 8: candidate 1 pos_err=0.9811 tes=NO
+2026-05-02 15:34:52,578 [INFO]   Rank 9: candidate 15 pos_err=0.9923 tes=NO
+2026-05-02 15:34:52,578 [INFO]   Rank 10: candidate 9 pos_err=0.9984 tes=NO
+2026-05-02 15:34:52,578 [INFO]   Rank 11: candidate 6 pos_err=0.9985 tes=NO
+2026-05-02 15:34:52,578 [INFO]   Rank 12: candidate 3 pos_err=0.9987 tes=NO
+2026-05-02 15:34:52,578 [INFO]   Rank 13: candidate 7 pos_err=0.9996 tes=NO
+2026-05-02 15:34:52,578 [INFO]   Rank 14: candidate 0 pos_err=0.9996 tes=NO
+2026-05-02 15:34:52,578 [INFO]   Rank 15: candidate 11 pos_err=0.9998 tes=NO
+2026-05-02 15:34:52,578 [INFO]   Rank 16: candidate 5 pos_err=0.9999 tes=NO
+2026-05-02 15:34:52,578 [INFO] 
+=== EUREKA-TRA (Evolutionary) Training Complete ===
+2026-05-02 15:34:52,578 [INFO]   Iter 1: best=7 pos_err=0.6252 (1/16 valid)
+2026-05-02 15:34:52,578 [INFO]   Iter 2: best=-1 pos_err=1.0000 (0/16 valid)
+2026-05-02 15:34:52,578 [INFO]   Iter 3: best=4 pos_err=0.7080 (2/16 valid)
+2026-05-02 15:34:52,578 [INFO]   Iter 4: best=10 pos_err=0.9174 (4/16 valid)
+2026-05-02 15:34:52,578 [INFO]   Iter 5: best=13 pos_err=0.0000 (4/16 valid)
+2026-05-02 15:34:52,578 [INFO] Full results: /root/autodl-tmp/TRA/results/cabinet/eureka-vec/seed42/logs/eureka_tra_evo_20260430_211657_s42_results.json
