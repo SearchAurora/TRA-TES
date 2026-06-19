@@ -7,7 +7,7 @@ from openai import OpenAI
 
 logger = logging.getLogger(__name__)
 
-QWEN_API_KEY = "sk-e289af135f7a4c138aa16c11f69cfd59"
+QWEN_API_KEY = ""
 QWEN_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 QWEN_MODEL    = "qwen-max"
 
